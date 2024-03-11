@@ -1,0 +1,19 @@
+<form action="" [formGroup]="registerFormGroup">
+    <app-input
+        id="register-input-username-72w5z2ui"
+        formControlName="username"
+        label="Usuário"/>
+    <app-input
+        id="register-input-email-ygz0mIw1"
+        formControlName="email"
+        label="Email"/>
+    <app-input
+        id="register-input-password-k936CKWU"
+        formControlName="password"
+        label="Password"/>
+
+    <app-button 
+        id="login-button-cp2SBdku"
+        label="Retornar"
+        (click)="goTo(RouteEnum.LOGIN)"/>
+</form>
