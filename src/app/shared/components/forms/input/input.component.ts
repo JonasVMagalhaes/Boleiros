@@ -21,6 +21,7 @@ export class InputComponent extends ValueAcessorComponent {
   @Input({ required: true }) label: string;
   @Input() mask: string;
   @Input() type: InputType = InputType.TEXT;
+  @Input() placeholder: string = "";
   
   public setValue(event: Event): void {
     this.updateValue((event.target as HTMLInputElement).value)
