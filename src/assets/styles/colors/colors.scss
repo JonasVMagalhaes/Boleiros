@@ -61,3 +61,9 @@ $gray-lighter: light($gray, 10%);
 $gray-light: light($gray, 20%);
 $gray-dark: dark($gray, 10%);
 $gray-darker: dark($gray, 20%);
+
+// Patterns
+$success: $green-dark;
+$info: $blue-dark;
+$warn: $yellow-dark;
+$error: $red-dark;
