@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { ButtonModule } from '@components/button/button.module';
 import { InputModule } from '@components/forms/input/input.module';
+import { HintErrorModule } from '@components/hint-error/hint-error.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
 
@@ -12,7 +13,8 @@ import { RouteUtilsService } from '@utils/route/route-utils';
   imports: [
     ReactiveFormsModule,
     InputModule,
-    ButtonModule
+    ButtonModule,
+    HintErrorModule
   ],
   providers: [RouteUtilsService],
   templateUrl: './recovery-password.component.html',
@@ -22,7 +24,8 @@ export class RecoveryPasswordComponent {
   protected readonly RouteEnum = RouteEnum;
   protected readonly recoveryPasswordFormGroup = new FormGroup({
     email: new FormControl(null, [
-      Validators.required
+      Validators.required,
+      Validators.email
     ])
   });
 

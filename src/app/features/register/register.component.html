@@ -43,6 +43,13 @@
         id="register-input-confirm-password-zGppqlEi"
         formControlName="confirmPassword"
         label="Confirm Password"/>
+    <app-hint-error
+        id="register-input-confirm-password-hint-error-p6YWeUTa"
+        [control]="registerFormGroup.controls['confirmPassword']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório',
+            passwordMismatch: 'As senhas não coincidem'
+        }"></app-hint-error>
 
     <app-button 
         id="login-button-cp2SBdku"
