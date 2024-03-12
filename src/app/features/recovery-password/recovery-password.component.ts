@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from '@components/button/button.module';
 import { InputModule } from '@components/forms/input/input.module';
@@ -21,7 +21,9 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 export class RecoveryPasswordComponent {
   protected readonly RouteEnum = RouteEnum;
   protected readonly recoveryPasswordFormGroup = new FormGroup({
-    email: new FormControl()
+    email: new FormControl(null, [
+      Validators.required
+    ])
   });
 
   constructor(private readonly routeUtils: RouteUtilsService) {}

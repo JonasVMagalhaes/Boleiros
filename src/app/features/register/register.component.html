@@ -3,14 +3,46 @@
         id="register-input-username-72w5z2ui"
         formControlName="username"
         label="Usuário"/>
+    <app-hint-error
+        id="register-input-username-hint-error-ajia7BTf"
+        [control]="registerFormGroup.controls['username']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório',
+            minlength: 'O tamanho mínimo desse campo são 6 caracteres'
+        }"></app-hint-error>
+
     <app-input
         id="register-input-email-ygz0mIw1"
         formControlName="email"
         label="Email"/>
+    <app-hint-error
+        id="register-input-email-hint-error-dKLeSZMS"
+        [control]="registerFormGroup.controls['email']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório',
+            email: 'Este campo só aceita email como valor'
+        }"></app-hint-error>
+
     <app-input
         id="register-input-password-k936CKWU"
         formControlName="password"
         label="Password"/>
+    <app-hint-error
+        id="register-input-password-hint-error-cihrPUCm"
+        [control]="registerFormGroup.controls['password']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório',
+            minLength: 'O tamanho mínimo para a senha são 6 caracteres',
+            lowercaseMissing: 'É necessário pelo menos 1 caractere minúscula na senha',
+            uppercaseMissing: 'É necessário pelo menos 1 caractere maiúsculo na senha',
+            numberMissing: 'É necessário pelo menos 1 caractere numérico na senha',
+            especialCharacterMissing: 'É necessário pelo menos 1 caractere especial na senha'
+        }"></app-hint-error>
+
+    <app-input
+        id="register-input-confirm-password-zGppqlEi"
+        formControlName="confirmPassword"
+        label="Confirm Password"/>
 
     <app-button 
         id="login-button-cp2SBdku"

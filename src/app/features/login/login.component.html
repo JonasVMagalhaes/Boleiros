@@ -1,12 +1,24 @@
 <form action="" [formGroup]="loginFormGroup">
-    <app-input 
+    <app-input
         id="login-input-username-bBjsp9BX"
         formControlName="username"
         label="Usuário"/>
-    <app-input
-        id="login-input-password-d124zJ80"
+    <app-hint-error
+        id="login-input-username-hint-error-pZShITrG"
+        [control]="loginFormGroup.controls['username']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório'
+        }"></app-hint-error>
+
+    <app-input id="login-input-password-d124zJ80"
         formControlName="password"
         label="Senha"/>
+    <app-hint-error
+        id="login-input-password-hint-error-pZShITrG"
+        [control]="loginFormGroup.controls['password']"
+        [errorMessages]="{
+            required: 'Este campo é obrigatório'
+        }"></app-hint-error>
 
     <app-button 
         id="login-button-cp2SBdku"

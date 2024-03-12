@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from '@components/button/button.module';
 
 import { InputModule } from '@components/forms/input/input.module';
+import { HintErrorModule } from '@components/hint-error/hint-error.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
 
@@ -12,7 +13,8 @@ import { RouteUtilsService } from '@utils/route/route-utils';
   imports: [
     ReactiveFormsModule,
     InputModule,
-    ButtonModule
+    ButtonModule,
+    HintErrorModule
   ],
   providers: [
     RouteUtilsService
@@ -23,8 +25,12 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 export class LoginComponent {
   protected readonly RouteEnum = RouteEnum;
   protected readonly loginFormGroup = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl(null, [
+      Validators.required
+    ]),
+    password: new FormControl(null, [
+      Validators.required
+    ])
   });
 
   constructor(private readonly routeUtils: RouteUtilsService) { }
