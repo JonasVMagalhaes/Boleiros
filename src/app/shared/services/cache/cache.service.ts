@@ -20,16 +20,16 @@ export class CacheService implements CacheImpl, OnInit {
     this.defineStrategy();
   }
 
-  save(): Observable<void> {
-    return this.impl.save();
+  save(id: string, value: string): Observable<void> {
+    return this.impl.save(id, value);
   }
 
   get(id: string): Observable<string> {
     return this.impl.get(id);
   }
 
-  update(data: string): Observable<void> {
-    return this.impl.update(data);
+  update(id: string, value: string): Observable<void> {
+    return this.impl.update(id, value);
   }
   
   delete(id: string): Observable<void> {

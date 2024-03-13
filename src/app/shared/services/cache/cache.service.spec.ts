@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { CacheService } from './cache.service';
 
-describe('CacheService', () => {
+describe(CacheService.name, () => {
   let service: CacheService;
 
   beforeEach(() => {
