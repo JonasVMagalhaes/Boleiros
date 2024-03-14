@@ -29,6 +29,7 @@
       "@assets/*": ["assets/*"],
       "@styles/*": ["styles/*"],
       "@features/*": ["app/features/*"],
+      "@adapters/*": ["app/core/adapters/*"],
       "@entities/*": ["app/core/entities/*"],
       "@components/*": ["app/shared/components/*"],
       "@enums/*": ["app/shared/enums/*"],

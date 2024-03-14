@@ -9,9 +9,9 @@ import { UserService } from './services/user.service';
   declarations: [],
   imports: [CommonModule],
   providers: [
+    UserService,
     UserStoreService,
     UserDtoService
-  ],
-  exports: [UserService]
+  ]
 })
 export class UserModule { }

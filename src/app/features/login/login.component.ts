@@ -3,6 +3,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ButtonModule } from '@components/button/button.module';
 
 import { InputModule } from '@components/forms/input/input.module';
+import { AuthModule } from '@entities/auth/auth.module';
+import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
+import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
 
@@ -12,7 +15,8 @@ import { RouteUtilsService } from '@utils/route/route-utils';
   imports: [
     ReactiveFormsModule,
     InputModule,
-    ButtonModule
+    ButtonModule,
+    AuthModule
   ],
   providers: [
     RouteUtilsService
@@ -22,19 +26,27 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 })
 export class LoginComponent {
   protected readonly RouteEnum = RouteEnum;
-  protected readonly loginFormGroup = new FormGroup({
+  protected readonly loginFormGroup = new FormGroup<AuthCredentials>({
     username: new FormControl(null, [
       Validators.required
     ]),
     password: new FormControl(null, [
       Validators.required
-    ])
+    ]),
   });
 
-  constructor(private readonly routeUtils: RouteUtilsService) { }
+  constructor(private readonly routeUtils: RouteUtilsService,
+              private readonly authService: AuthService) { }
 
   goTo(path: RouteEnum): void {
     this.routeUtils.goTo(path);
+  }
+
+  signIn(): void {
+    this.authService.signIn(this.loginFormGroup.getRawValue())
+      .subscribe(res => {
+        this.routeUtils.goTo(RouteEnum.HOME);
+      });
   }
 
 }

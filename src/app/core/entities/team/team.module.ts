@@ -7,7 +7,6 @@ import { TeamStoreService } from './store/team-store.service';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
-  providers: [TeamStoreService],
-  exports: [TeamService]
+  providers: [TeamService, TeamStoreService]
 })
 export class TeamModule { }

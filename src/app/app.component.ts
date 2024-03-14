@@ -9,7 +9,7 @@ import { CheckUpdatesService } from '@services/sw-updates/check-updates.service'
   standalone: true,
   imports: [
     RouterOutlet,
-    CheckUpdatesModule
+    CheckUpdatesModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
