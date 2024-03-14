@@ -37,7 +37,8 @@ export class CookieService implements CacheImpl {
     }
 
     delete(key: string): Observable<void> {
-        throw new Error('Method not implemented.');
+        document.cookie = `${key}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+        return of(undefined);
     }
 }
 
