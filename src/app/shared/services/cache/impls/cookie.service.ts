@@ -1,25 +1,42 @@
 import { Injectable } from '@angular/core';
 
 import { CacheImpl } from '../models/cache-impl';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CookieService implements CacheImpl {
-    save(): Observable<void> {
-        throw new Error('Method not implemented.');
+
+    save(key: string, value: string, daysToExpire: number): Observable<void> {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+        document.cookie = `${key}=${value};expires=${expires.toUTCString()};path=/`;
+        return of(undefined);
     }
 
-    get(id: string): Observable<string> {
-        throw new Error('Method not implemented.');
+    get(key: string): Observable<string> {
+        const name = `${key}=`;
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name) === 0) {
+                return of(cookie.substring(name.length, cookie.length));
+            }
+        }
+        return of('');
     }
 
-    update(data: string): Observable<void> {
-        throw new Error('Method not implemented.');
+    update(key: string, value: string, daysToExpire: number): Observable<void> {
+        this.save(key, value, daysToExpire);
+        return of(undefined);
     }
 
-    delete(id: string): Observable<void> {
+    delete(key: string): Observable<void> {
         throw new Error('Method not implemented.');
     }
 }

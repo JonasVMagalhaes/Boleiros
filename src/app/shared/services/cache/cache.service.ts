@@ -1,43 +1,48 @@
-import { Injectable, Input, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { CacheImpl } from './models/cache-impl';
 import { CacheStrategy } from './models/cache-strategy.enum';
 import { CookieService } from './impls/cookie.service';
+import { EncryptionService } from '@services/encryption/encryption.service';
+import { KeysCacheEnum } from '@enums/keys/keys-cache.enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CacheService implements CacheImpl, OnInit {
-  @Input({ required: true }) strategy: CacheStrategy;
-
+export class CacheService implements CacheImpl {
   private impl: CacheImpl;
 
-  constructor(private readonly cookieService: CookieService) {}
+  constructor(private readonly cookieService: CookieService,
+              private readonly encryptionService: EncryptionService) {
+                this.defineStrategy();
+              }
 
-  ngOnInit(): void {
-    this.defineStrategy();
+  setStrategy(strategy: CacheStrategy): this {
+    this.defineStrategy(strategy);
+    return this;
   }
 
-  save(id: string, value: string): Observable<void> {
-    return this.impl.save(id, value);
+  save(key: KeysCacheEnum, value: string, daysToExpire: number = 7): Observable<void> {
+    return this.impl.save(this.encryptionService.encrypt(key), this.encryptionService.encrypt(value), daysToExpire);
   }
 
-  get(id: string): Observable<string> {
-    return this.impl.get(id);
+  get(key: KeysCacheEnum): Observable<string> {
+    return this.impl.get(this.encryptionService.encrypt(key))
+      .pipe(map(data => this.encryptionService.decrypt(data)));
   }
 
-  update(id: string, value: string): Observable<void> {
-    return this.impl.update(id, value);
+  update(key: KeysCacheEnum, value: string, daysToExpire: number = 7): Observable<void> {
+    return this.impl.update(this.encryptionService.encrypt(key), this.encryptionService.encrypt(value), daysToExpire);
   }
   
-  delete(id: string): Observable<void> {
-    throw this.impl.delete(id);
+  delete(key: KeysCacheEnum): Observable<void> {
+    throw this.impl.delete(this.encryptionService.encrypt(key));
   }
 
-  private defineStrategy(): void {
-    switch(this.strategy) {
+  private defineStrategy(strategy: CacheStrategy = CacheStrategy.COOKIE): void {
+    switch(strategy) {
       case CacheStrategy.COOKIE:
         this.impl = this.cookieService;
     }
