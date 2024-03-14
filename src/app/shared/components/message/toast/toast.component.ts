@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ToastMessage } from './models/toast-message.interface';
+import { Message } from '../models/message.interface';
 
 @Component({
   selector: 'app-toast',
@@ -8,8 +8,9 @@ import { ToastMessage } from './models/toast-message.interface';
   styleUrl: './toast.component.scss'
 })
 export class ToastComponent {
-  readonly toastMessages: ToastMessage[] = [
+  readonly toastMessages: Message[] = [
     { severity: '', message: '123', summary: '123' },
     { severity: '', message: '124', summary: '256' }
   ];
 }
+  

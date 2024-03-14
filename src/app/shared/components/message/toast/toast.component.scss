@@ -1,0 +1,8 @@
+@import '@assets/styles/variables.scss';
+
+.toast-container {
+    position: fixed;
+    top: $size-32;
+    right: $size-64;
+    width: 360px;
+}
