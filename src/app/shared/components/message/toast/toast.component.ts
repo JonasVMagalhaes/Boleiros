@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 
-import { Message } from '../models/message.interface';
+import { TransformYAnimation } from '../animations/transform-y-animation';
+import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
-  styleUrl: './toast.component.scss'
+  styleUrl: './toast.component.scss',
+  animations: [TransformYAnimation.get()],
 })
 export class ToastComponent {
-  readonly toastMessages: Message[] = [
-    { severity: '', message: '123', summary: '123' },
-    { severity: '', message: '124', summary: '256' }
-  ];
+  constructor(private readonly toastService: ToastService) {}
+
+  get toast(): ToastService {
+    return this.toastService;
+  }
 }
   

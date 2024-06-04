@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from '@components/button/button.module';
 
 import { InputModule } from '@components/forms/input/input.module';
+import { ToastService } from '@components/message/toast/services/toast.service';
 import { AuthModule } from '@entities/auth/auth.module';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
@@ -13,13 +15,14 @@ import { RouteUtilsService } from '@utils/route/route-utils';
   selector: 'app-login',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     InputModule,
     ButtonModule,
     AuthModule
   ],
   providers: [
-    RouteUtilsService
+    RouteUtilsService,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -36,7 +39,8 @@ export class LoginComponent {
   });
 
   constructor(private readonly routeUtils: RouteUtilsService,
-              private readonly authService: AuthService) { }
+              private readonly authService: AuthService,
+              public readonly toastService: ToastService) { }
 
   goTo(path: RouteEnum): void {
     this.routeUtils.goTo(path);
@@ -45,7 +49,11 @@ export class LoginComponent {
   signIn(): void {
     this.authService.signIn(this.loginFormGroup.getRawValue())
       .subscribe(res => {
-        this.routeUtils.goTo(RouteEnum.HOME);
+        this.toastService.add({
+          message: 'Teste123',
+          summary: 'Teste1234'
+        })
+        // this.routeUtils.goTo(RouteEnum.HOME);
       });
   }
 

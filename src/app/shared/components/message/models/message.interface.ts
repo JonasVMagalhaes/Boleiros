@@ -1,5 +1,7 @@
 export interface Message {
     summary: string;
     message: string;
-    severity: string;
+
+    severity?: string;    
+    duration?: number;
 }
