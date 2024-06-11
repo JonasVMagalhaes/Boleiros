@@ -1,26 +1,16 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { InputType } from '@components/forms/input/models/input-type.interface';
 import { MessageService } from '@components/message/services/message.service';
-import { AuthModule } from '@entities/auth/auth.module';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
-import { SharedModule } from 'app/shared/shared.module';
 import { CustomValidators } from 'app/shared/validators/validators';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    AuthModule,
-    SharedModule
-  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

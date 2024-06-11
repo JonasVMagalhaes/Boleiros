@@ -1,5 +1,6 @@
 <div class="toast-container">
-    <div *ngFor="let message of messageService.messages">
-        <app-message-item [@transformY]="message ? 'open' : 'close'" [message]="message"/>
+    <div class="toast-item" *ngFor="let message of messageService.messages" [@transformY]="message ? 'open' : 'close'">
+        <span class="summary">{{ message.summary }}</span>
+        <span class="message">{{ message.message }}</span>
     </div>
 </div>

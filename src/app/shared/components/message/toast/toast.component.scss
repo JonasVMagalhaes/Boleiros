@@ -2,7 +2,16 @@
 
 .toast-container {
     position: fixed;
-    top: $size-32;
-    right: $size-64;
-    width: 360px;
+    display: grid;
+    box-sizing: border-box;
+    padding: $size-32;
+    justify-content: flex-end;
+    gap: $size-8;
+    width: 100%;
+
+    .toast-item {
+        display: grid;
+        background-color: red;
+        padding: $size-4;
+    }
 }

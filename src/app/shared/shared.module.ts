@@ -10,9 +10,7 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 
 @NgModule({
   imports: [HttpClientAdapterModule],
-  exports: [
-    ComponentsModule
-  ],
+  exports: [ComponentsModule],
   providers: [
     CacheService,
     EncryptionService,

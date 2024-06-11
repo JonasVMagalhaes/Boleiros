@@ -16,8 +16,8 @@ export class CacheService implements CacheImpl {
 
   constructor(private readonly cookieService: CookieService,
               private readonly encryptionService: EncryptionService) {
-                this.defineStrategy();
-              }
+    this.defineStrategy();
+  }
 
   setStrategy(strategy: CacheStrategy): this {
     this.defineStrategy(strategy);

@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { CheckUpdatesModule } from '@services/sw-updates/check-updates.module';
 import { CheckUpdatesService } from '@services/sw-updates/check-updates.service';
-import { SharedModule } from './shared/shared.module';
+import { FeaturesModule } from '@features/features.module';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     RouterOutlet,
     CheckUpdatesModule,
-    SharedModule
+    FeaturesModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
