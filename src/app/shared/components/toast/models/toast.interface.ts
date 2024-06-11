@@ -1,4 +1,4 @@
-export interface Message {
+export interface Toast {
     summary: string;
     message: string;
 

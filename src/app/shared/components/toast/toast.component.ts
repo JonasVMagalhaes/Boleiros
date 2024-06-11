@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { TransformYAnimation } from '../animations/transform-y-animation';
-import { MessageService } from '../services/message.service';
+import { TransformYAnimation } from './animations/transform-y-animation';
+import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -10,6 +10,6 @@ import { MessageService } from '../services/message.service';
   animations: [TransformYAnimation.get()],
 })
 export class ToastComponent {
-  constructor(public readonly messageService: MessageService) {}
+  constructor(public readonly toastService: ToastService) {}
 }
   

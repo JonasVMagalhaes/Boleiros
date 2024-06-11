@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ToastComponent } from './toast/toast.component';
-import { MessageService } from './services/message.service';
+import { ToastService } from './services/toast.service';
+import { ToastComponent } from './toast.component';
 
 @NgModule({
   declarations: [ToastComponent],
   imports: [CommonModule],
-  providers: [MessageService],
+  providers: [ToastService],
   exports: [ToastComponent]
 })
-export class MessageModule { }
+export class ToastModule { }
