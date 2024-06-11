@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from '@components/button/button.module';
 import { InputModule } from '@components/forms/input/input.module';
+import { InputType } from '@components/forms/input/models/input-type.interface';
 import { AuthModule } from '@entities/auth/auth.module';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
+import { CustomValidators } from 'app/shared/validators/validators';
 
 @Component({
   selector: 'app-login',
@@ -26,19 +28,17 @@ import { RouteUtilsService } from '@utils/route/route-utils';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {  
+  protected loginFormGroup: FormGroup<AuthCredentials>;
+  protected readonly INPUT_TYPE = InputType;
   protected readonly RouteEnum = RouteEnum;
-  protected readonly loginFormGroup = new FormGroup<AuthCredentials>({
-    username: new FormControl(null, [
-      Validators.required
-    ]),
-    password: new FormControl(null, [
-      Validators.required
-    ]),
-  });
 
   constructor(private readonly routeUtils: RouteUtilsService,
               private readonly authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.createFormGroup();
+  }
 
   goTo(path: RouteEnum): void {
     this.routeUtils.goTo(path);
@@ -49,4 +49,15 @@ export class LoginComponent {
       .subscribe(() => this.routeUtils.goTo(RouteEnum.HOME));
   }
 
+  private createFormGroup(): void {
+    this.loginFormGroup = new FormGroup<AuthCredentials>({
+      username: new FormControl(null, [
+        Validators.required
+      ]),
+      password: new FormControl(null, [
+        Validators.required,
+        CustomValidators.passwordValidator
+      ]),
+    });
+  }
 }
