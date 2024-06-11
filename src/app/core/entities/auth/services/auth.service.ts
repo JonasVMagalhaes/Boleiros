@@ -31,8 +31,7 @@ export class AuthService {
     return this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, AuthDto.toDto(credencials))
       .pipe(
         tap({
-          next: (response) => this.signInterceptorsService.executeSuccess(response),
-          error: (error) => this.signInterceptorsService.executeError(error)
+          next: (response) => this.signInterceptorsService.executeSuccess(response)
         }),
         map(response => AuthDto.fromDto(response))
       );

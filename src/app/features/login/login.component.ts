@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { ButtonModule } from '@components/button/button.module';
-import { InputModule } from '@components/forms/input/input.module';
 import { InputType } from '@components/forms/input/models/input-type.interface';
+import { MessageService } from '@components/message/services/message.service';
 import { AuthModule } from '@entities/auth/auth.module';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
+import { SharedModule } from 'app/shared/shared.module';
 import { CustomValidators } from 'app/shared/validators/validators';
 
 @Component({
@@ -18,12 +18,8 @@ import { CustomValidators } from 'app/shared/validators/validators';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    InputModule,
-    ButtonModule,
-    AuthModule
-  ],
-  providers: [
-    RouteUtilsService,
+    AuthModule,
+    SharedModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -34,7 +30,8 @@ export class LoginComponent implements OnInit {
   protected readonly RouteEnum = RouteEnum;
 
   constructor(private readonly routeUtils: RouteUtilsService,
-              private readonly authService: AuthService) { }
+              private readonly authService: AuthService,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
     this.createFormGroup();
@@ -46,7 +43,15 @@ export class LoginComponent implements OnInit {
 
   signIn(): void {
     this.authService.signIn(this.loginFormGroup.getRawValue())
-      .subscribe(() => this.routeUtils.goTo(RouteEnum.HOME));
+      .subscribe({
+        next: () => {
+          this.messageService.toast({ summary: "Sucesso", message: "Authenticado com sucesso" });
+          this.routeUtils.goTo(RouteEnum.HOME)
+        },
+        error: (err: Error) => {
+          this.messageService.toast({ summary: "Erro", message: err.message });
+        }
+      });
   }
 
   private createFormGroup(): void {

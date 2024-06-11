@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { ButtonModule } from '@components/button/button.module';
-import { InputModule } from '@components/forms/input/input.module';
-import { HintErrorModule } from '@components/hint-error/hint-error.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { FormValidator } from '@utils/form-validators/form-validators';
 import { RouteUtilsService } from '@utils/route/route-utils';
+import { SharedModule } from 'app/shared/shared.module';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    InputModule,
-    ButtonModule,
-    HintErrorModule
-  ],
-  providers: [
-    RouteUtilsService
+    SharedModule
   ],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss'

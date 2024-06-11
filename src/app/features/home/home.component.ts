@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 
-import { ButtonModule } from '@components/button/button.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
+import { SharedModule } from 'app/shared/shared.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule],
-  providers: [RouteUtilsService],
+  imports: [SharedModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
