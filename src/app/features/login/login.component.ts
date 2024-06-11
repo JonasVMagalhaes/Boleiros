@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonModule } from '@components/button/button.module';
 
+import { ButtonModule } from '@components/button/button.module';
 import { InputModule } from '@components/forms/input/input.module';
-import { ToastService } from '@components/message/toast/services/toast.service';
 import { AuthModule } from '@entities/auth/auth.module';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
@@ -39,8 +38,7 @@ export class LoginComponent {
   });
 
   constructor(private readonly routeUtils: RouteUtilsService,
-              private readonly authService: AuthService,
-              public readonly toastService: ToastService) { }
+              private readonly authService: AuthService) { }
 
   goTo(path: RouteEnum): void {
     this.routeUtils.goTo(path);
@@ -48,13 +46,7 @@ export class LoginComponent {
 
   signIn(): void {
     this.authService.signIn(this.loginFormGroup.getRawValue())
-      .subscribe(res => {
-        this.toastService.add({
-          message: 'Teste123',
-          summary: 'Teste1234'
-        })
-        // this.routeUtils.goTo(RouteEnum.HOME);
-      });
+      .subscribe(() => this.routeUtils.goTo(RouteEnum.HOME));
   }
 
 }

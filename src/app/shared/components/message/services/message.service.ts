@@ -7,19 +7,18 @@ interface MessageItem extends Message {
   id: string;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class ToastService {
-  public toastMessages: Message[] = [];
+export class MessageService {
+  public messages: Message[] = [];
   public timeDurationToast: number = 3000;
 
-  add(message: Message): void {
+  toast(message: Message): void {
     const id = UUID.generate();
     const messageWidthId: MessageItem = Object.assign(message, { id });
 
-    this.toastMessages.push(message);
+    this.messages.push(message);
     this.setTimeToRemoveMessage(messageWidthId);
   }
 
@@ -27,13 +26,13 @@ export class ToastService {
     if(this.timeDurationToast) {
       setTimeout(() => {
         this.castToastMessagesToMessageItem()
-          .forEach((item: MessageItem, index) => item.id === message.id && this.toastMessages.splice(index, 1));
+          .forEach((item: MessageItem, index) => item.id === message.id && this.messages.splice(index, 1));
       }, this.timeDurationToast);
     }
   }
 
   private castToastMessagesToMessageItem(): MessageItem[] {
-    return this.toastMessages as MessageItem[];
+    return this.messages as MessageItem[];
   }
 }
 

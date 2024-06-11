@@ -1,5 +1,5 @@
 <div class="toast-container">
-    <div *ngFor="let message of toast.toastMessages">
+    <div *ngFor="let message of messageService.messages">
         <app-message-item [@transformY]="message ? 'open' : 'close'" [message]="message"/>
     </div>
 </div>

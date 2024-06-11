@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Primitive } from "@enums/primitives/primitive.enum";
+import { SignCodeErrors } from "@enums/primitives/sign-code-errors-enum";
 import { PrimitiveAuthResponse } from "@models/primitives/auth/auth-response.interface";
 import { PrimitiveSignInResponse } from "@models/primitives/sign-in/sign-in-response.interface";
+import { ErrorRequisition } from "@models/requisitions/error-requisition";
 import { Observable, of, throwError } from "rxjs";
 
 @Injectable()
@@ -29,10 +31,16 @@ class MockPrimitives {
             { username: "moises", password: "124" }
         ]
 
+        const errorUnauthorized: ErrorRequisition<{}> = {
+            status: 401,
+            code: SignCodeErrors.CREEDENTIALS_NOT_MATCH,
+            message: "Error nas credenciais"
+        }
+
         if(validUsers.some((validUser: any) => validUser.username === body.username && validUser.password === body.password)){
             return of({ token: '123456789', expireTime: new Date().getDate() });
-        } else {
-            throw new Error("Erro nas credenciais")
+        } else {            
+            return throwError(() => errorUnauthorized);
         }
         
     }

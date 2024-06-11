@@ -13,7 +13,8 @@ export class AuthDto {
 
     static fromDto(signInResponse: PrimitiveSignInResponse): Auth {
         return {
-            token: signInResponse.token
+            token: signInResponse.token,
+            expireTime: signInResponse.expireTime
         }
     }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MessageModule } from '@components/message/message.module';
 
 import { CheckUpdatesModule } from '@services/sw-updates/check-updates.module';
 import { CheckUpdatesService } from '@services/sw-updates/check-updates.service';
+import { SharedModule } from './shared/shared.module';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { CheckUpdatesService } from '@services/sw-updates/check-updates.service'
   imports: [
     RouterOutlet,
     CheckUpdatesModule,
-    MessageModule
+    SharedModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

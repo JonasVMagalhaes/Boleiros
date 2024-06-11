@@ -11,14 +11,14 @@ import { AuthDto } from '../dtos/auth-dto';
 import { Authenticated } from '../models/authenticated-interface';
 import { AuthenticatedDto } from '../dtos/authenticated-dto';
 import { PrimitiveAuthResponse } from '@models/primitives/auth/auth-response.interface';
-import { AuthStoreService } from '../store/auth-store.service';
+import { SignInterceptorsService } from '../interceptors/sign-interceptor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(private readonly httpClient: HttpClient,
-              private readonly authStoreService: AuthStoreService) {}
+              private readonly signInterceptorsService: SignInterceptorsService) {}
 
   isAuthenticated(): Observable<Authenticated> {
     return this.httpClient.get<PrimitiveAuthResponse>(Primitive.AUTH)
@@ -30,7 +30,10 @@ export class AuthService {
   signIn(credencials: AuthCredentials): Observable<Auth> {
     return this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, AuthDto.toDto(credencials))
       .pipe(
-        tap(response => this.authStoreService.save(response)),
+        tap({
+          next: (response) => this.signInterceptorsService.executeSuccess(response),
+          error: (error) => this.signInterceptorsService.executeError(error)
+        }),
         map(response => AuthDto.fromDto(response))
       );
   }
