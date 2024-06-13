@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
 import { PrivateHeaderComponent } from '@components/private-header/private-header.component';
-import { PrivateFooterComponent } from '@components/private-footer/private-footer.component';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { publicRouteGuard } from '@guards/public-route.guard';
 import { privateRouteGuard } from '@guards/private-route.guard';
@@ -22,7 +21,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: PrivateHeaderComponent, outlet: 'header' },
             ...privateRoutes,
-            { path: '', component: PrivateFooterComponent, outlet: 'footer' }
+            // { path: '', component: PrivateFooterComponent, outlet: 'footer' }
         ]
     }
 ];

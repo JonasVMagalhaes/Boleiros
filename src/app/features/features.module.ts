@@ -8,7 +8,7 @@ import { HomeModule } from './home/home.module';
     imports: [
         SharedModule,
         LoginModule,
-        HomeModule
+        HomeModule,
     ],
     exports: [SharedModule]
 })

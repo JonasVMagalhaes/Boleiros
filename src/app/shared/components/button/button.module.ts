@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from './button.component';
-import { ButtonPrimaryDirective } from './directives/button-primary.directive';
-import { ButtonLinkDirective } from './directives/button-link.directive';
-import { ButtonSecondaryDirective } from './directives/button-secondary.directive';
-import { ButtonWarningDirective } from './directives/button-warning.directive';
-import { ButtonDangerDirective } from './directives/button-danger.directive';
-import { ButtonHelpDirective } from './directives/button-help.directive';
+import { ButtonPrimaryDirective } from './components/button-primary.directive';
+import { ButtonLinkDirective } from './components/button-link.directive';
+import { ButtonSecondaryDirective } from './components/button-secondary.directive';
+import { ButtonWarningDirective } from './components/button-warning.directive';
+import { ButtonDangerDirective } from './components/button-danger.directive';
+import { ButtonHelpDirective } from './components/button-help.directive';
+
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { ButtonHelpDirective } from './directives/button-help.directive';
     ButtonDangerDirective,
     ButtonHelpDirective
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatButtonModule
+  ],
   exports: [
     ButtonComponent,
     ButtonPrimaryDirective,
