@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 
 import { Observable, map } from 'rxjs';
 
-import { CacheImpl } from './models/cache-impl';
-import { CacheStrategy } from './models/cache-strategy.enum';
-import { CookieService } from './impls/cookie.service';
+import { CacheStrategy } from './models/cache-strategy';
+import { CookieService } from './strategies/cookie.service';
 import { EncryptionService } from '@services/encryption/encryption.service';
 import { KeysCacheEnum } from '@enums/keys/keys-cache.enum';
+import { CacheStrategyType } from './models/cache-strategy-type';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CacheService implements CacheImpl {
-  private impl: CacheImpl;
+export class CacheService implements CacheStrategy {
+  private impl: CacheStrategy;
 
   constructor(private readonly cookieService: CookieService,
               private readonly encryptionService: EncryptionService) {
     this.defineStrategy();
   }
 
-  setStrategy(strategy: CacheStrategy): this {
+  setStrategy(strategy: CacheStrategyType): this {
     this.defineStrategy(strategy);
     return this;
   }
@@ -41,9 +41,9 @@ export class CacheService implements CacheImpl {
     throw this.impl.delete(this.encryptionService.encrypt(key));
   }
 
-  private defineStrategy(strategy: CacheStrategy = CacheStrategy.COOKIE): void {
+  private defineStrategy(strategy: CacheStrategyType = CacheStrategyType.COOKIE): void {
     switch(strategy) {
-      case CacheStrategy.COOKIE:
+      case CacheStrategyType.COOKIE:
         this.impl = this.cookieService;
     }
   }

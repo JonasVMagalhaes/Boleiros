@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { CacheImpl } from '../models/cache-impl';
 import { Observable, of } from 'rxjs';
+import { CacheStrategy } from '../models/cache-strategy';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CookieService implements CacheImpl {
+export class CookieService implements CacheStrategy {
 
     save(key: string, value: string, daysToExpire: number): Observable<void> {
         const expires = new Date();
