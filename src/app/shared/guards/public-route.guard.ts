@@ -15,9 +15,7 @@ export const publicRouteGuard: CanActivateFn = (route, state) => {
   if (isPlatformBrowser(platformId)) {
     return cacheService.get(KeysCacheEnum.AUTH)
       .pipe(
-        tap(key => {
-          key && router.navigate([RouteEnum.HOME]);
-        }),
+        tap(key => key && router.navigate([RouteEnum.HOME])),
         map(authenticated => Boolean(!authenticated)),
       );
   } else {
