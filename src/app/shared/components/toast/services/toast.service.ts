@@ -13,7 +13,7 @@ interface ToastItem extends Toast {
 export class ToastService {
   public toasts: Toast[] = [];
   public timeDurationToast: number = 3000;
-
+  
   toast(toast: Toast): void {
     const id = UUID.generate();
     const messageWidthId: ToastItem = Object.assign(toast, { id });

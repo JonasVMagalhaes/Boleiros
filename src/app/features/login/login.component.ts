@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: () => {
           this.toastService.toast({ summary: "Sucesso", message: "Authenticado com sucesso" });
-          this.routeUtils.goTo(RouteEnum.HOME)
+          this.routeUtils.goTo(RouteEnum.HOME);
         },
         error: (err: Error) => {
           this.toastService.toast({ summary: "Erro", message: err.message });
