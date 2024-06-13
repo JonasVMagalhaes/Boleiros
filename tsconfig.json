@@ -31,11 +31,13 @@
       "@features/*": ["app/features/*"],
       "@adapters/*": ["app/core/adapters/*"],
       "@entities/*": ["app/core/entities/*"],
+      "@routes/*": ["app/core/routes/*"],
       "@components/*": ["app/shared/components/*"],
       "@enums/*": ["app/shared/enums/*"],
       "@models/*": ["app/shared/models/*"],
       "@services/*": ["app/shared/services/*"],
       "@providers/*": ["app/shared/providers/*"],
+      "@guards/*": ["app/shared/guards/*"],
       "@utils/*": ["app/shared/utils/*"],
     }
   },
