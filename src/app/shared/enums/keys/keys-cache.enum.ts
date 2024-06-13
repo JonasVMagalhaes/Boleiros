@@ -1,3 +1,3 @@
 export enum KeysCacheEnum {
-    AUTH = 'authentication'
+    AUTH = 'access-token'
 }

@@ -25,20 +25,19 @@ export class CacheService implements CacheStrategy {
   }
 
   save(key: KeysCacheEnum, value: string, daysToExpire: number = 7): Observable<void> {
-    return this.impl.save(this.encryptionService.encrypt(key), this.encryptionService.encrypt(value), daysToExpire);
+    return this.impl.save(key, this.encryptionService.encrypt(value), daysToExpire);
   }
 
   get(key: KeysCacheEnum): Observable<string> {
-    return this.impl.get(this.encryptionService.encrypt(key))
-      .pipe(map(data => this.encryptionService.decrypt(data)));
+    return this.impl.get(key).pipe(map(data => this.encryptionService.decrypt(data)));
   }
 
   update(key: KeysCacheEnum, value: string, daysToExpire: number = 7): Observable<void> {
-    return this.impl.update(this.encryptionService.encrypt(key), this.encryptionService.encrypt(value), daysToExpire);
+    return this.impl.update(key, this.encryptionService.encrypt(value), daysToExpire);
   }
   
   delete(key: KeysCacheEnum): Observable<void> {
-    throw this.impl.delete(this.encryptionService.encrypt(key));
+    throw this.impl.delete(key);
   }
 
   private defineStrategy(strategy: CacheStrategyType = CacheStrategyType.COOKIE): void {

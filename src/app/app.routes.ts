@@ -9,15 +9,42 @@ import { RegisterGameComponent } from '@features/register-game/register-game.com
 import { RegisterComponent } from '@features/register/register.component';
 import { ResetPasswordComponent } from '@features/reset-password/reset-password.component';
 import { TeamComponent } from '@features/team/team.component';
+import { publicRouteGuard } from './shared/guards/public-route.guard';
+import { privateRouteGuard } from './shared/guards/private-route.guard';
 
 export const routes: Routes = [
-    { path: RouteEnum.EMPTY, pathMatch: 'full', component: LoginComponent },
-    { path: RouteEnum.LOGIN, redirectTo: RouteEnum.EMPTY },
-    { path: RouteEnum.HOME, component: HomeComponent },
-    { path: RouteEnum.TEAM, component: TeamComponent },
-    { path: RouteEnum.REGISTER, component: RegisterComponent },
-    { path: RouteEnum.REGISTER_GAME, component: RegisterGameComponent },
-    { path: RouteEnum.GAME, component: GameComponent },
-    { path: RouteEnum.RECOVERY_PASSWORD, component: RecoveryPasswordComponent },
-    { path: RouteEnum.RESET_PASSWORD, component: ResetPasswordComponent }
+    {
+        path: RouteEnum.EMPTY,
+        pathMatch: 'full',
+        component: LoginComponent,
+        canActivate: [publicRouteGuard]
+    },
+    {
+        path: RouteEnum.LOGIN,
+        redirectTo: RouteEnum.EMPTY
+    },
+    {
+        path: RouteEnum.HOME,
+        component: HomeComponent,
+        canActivate: [privateRouteGuard]
+    },
+    {
+        path: RouteEnum.TEAM,
+        component: TeamComponent
+    },
+    {
+        path: RouteEnum.REGISTER, component: RegisterComponent
+    },
+    { 
+        path: RouteEnum.REGISTER_GAME, component: RegisterGameComponent
+    },
+    { 
+        path: RouteEnum.GAME, component: GameComponent
+    },
+    { 
+        path: RouteEnum.RECOVERY_PASSWORD, component: RecoveryPasswordComponent
+    },
+    { 
+        path: RouteEnum.RESET_PASSWORD, component: ResetPasswordComponent
+    }
 ];

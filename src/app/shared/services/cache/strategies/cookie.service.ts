@@ -7,7 +7,6 @@ import { CacheStrategy } from '../models/cache-strategy';
     providedIn: 'root'
 })
 export class CookieService implements CacheStrategy {
-
     save(key: string, value: string, daysToExpire: number): Observable<void> {
         const expires = new Date();
         expires.setTime(expires.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
