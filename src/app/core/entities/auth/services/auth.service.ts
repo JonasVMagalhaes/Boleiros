@@ -5,12 +5,12 @@ import { Observable, map, tap } from 'rxjs';
 
 import { Primitive } from '@enums/primitives/primitive.enum';
 import { PrimitiveSignInResponse } from '@models/primitives/sign-in/sign-in-response.interface';
+import { PrimitiveAuthResponse } from '@models/primitives/auth/auth-response.interface';
 import { AuthCredentials } from '../models/auth-credentials.interface';
 import { Auth } from '../models/auth-interface';
 import { AuthDto } from '../dtos/auth-dto';
 import { Authenticated } from '../models/authenticated-interface';
 import { AuthenticatedDto } from '../dtos/authenticated-dto';
-import { PrimitiveAuthResponse } from '@models/primitives/auth/auth-response.interface';
 import { SignInterceptorsService } from '../interceptors/sign-interceptor';
 
 @Injectable({

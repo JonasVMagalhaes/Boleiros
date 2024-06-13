@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { FormValidator } from '@utils/form-validators/form-validators';
 import { RouteUtilsService } from '@utils/route/route-utils';
-import { SharedModule } from 'app/shared/shared.module';
 
 @Component({
   selector: 'app-register',

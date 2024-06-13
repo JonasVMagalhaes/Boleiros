@@ -7,7 +7,7 @@ import { AuthCredentials } from '@entities/auth/models/auth-credentials.interfac
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
-import { CustomValidators } from 'app/shared/validators/validators';
+import { CustomValidators } from '@validators/validators';
 
 @Component({
   selector: 'app-login',

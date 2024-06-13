@@ -1,7 +1,7 @@
 import { PrimitiveSignInResponse } from "@models/primitives/sign-in/sign-in-response.interface";
+import { PrimitiveSignInRequest } from "@models/primitives/sign-in/sign-in-request.interface";
 import { AuthCredentials } from "../models/auth-credentials.interface";
 import { Auth } from "../models/auth-interface";
-import { PrimitiveSignInRequest } from "@models/primitives/sign-in/sign-in-request.interface";
 
 export class AuthDto {
     static toDto(authCredentials: AuthCredentials): PrimitiveSignInRequest {

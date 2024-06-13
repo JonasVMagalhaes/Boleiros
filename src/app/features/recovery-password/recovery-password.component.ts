@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { RouteUtilsService } from '@utils/route/route-utils';
-import { SharedModule } from 'app/shared/shared.module';
 
 @Component({
   selector: 'app-recovery-password',

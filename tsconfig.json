@@ -34,11 +34,12 @@
       "@routes/*": ["app/core/routes/*"],
       "@components/*": ["app/shared/components/*"],
       "@enums/*": ["app/shared/enums/*"],
+      "@guards/*": ["app/shared/guards/*"],
       "@models/*": ["app/shared/models/*"],
       "@services/*": ["app/shared/services/*"],
       "@providers/*": ["app/shared/providers/*"],
-      "@guards/*": ["app/shared/guards/*"],
       "@utils/*": ["app/shared/utils/*"],
+      "@validators/*": ["app/shared/validators/*"],
     }
   },
   "angularCompilerOptions": {
