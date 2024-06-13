@@ -9,8 +9,6 @@ import { ButtonWarningDirective } from './components/button-warning.directive';
 import { ButtonDangerDirective } from './components/button-danger.directive';
 import { ButtonHelpDirective } from './components/button-help.directive';
 
-import { MatButtonModule } from '@angular/material/button';
-
 @NgModule({
   declarations: [
     ButtonComponent,
@@ -21,10 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     ButtonDangerDirective,
     ButtonHelpDirective
   ],
-  imports: [
-    CommonModule,
-    MatButtonModule
-  ],
+  imports: [CommonModule],
   exports: [
     ButtonComponent,
     ButtonPrimaryDirective,
