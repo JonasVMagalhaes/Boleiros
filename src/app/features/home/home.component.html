@@ -1,5 +1,10 @@
-<app-button
-    button-primary
-    id="home-button-register-game-9smnm6Ds"
-    label="Registrar racha"
-    (click)="goTo(RouteEnum.REGISTER_GAME)"/>
+<div class="container">
+    <app-resume-society-football [matchs]="matchs"/>
+
+    <app-button
+        button-primary
+        class="button-new-match"
+        id="home-button-register-game-9smnm6Ds"
+        label="Registrar novo racha"
+        (click)="goTo(RouteEnum.REGISTER_GAME)"/>
+</div>

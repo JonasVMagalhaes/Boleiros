@@ -1,0 +1,30 @@
+<div class="container">
+    @for (match of matchs; track match) {
+        <div class="match">
+            <div class="teams">
+                <div class="team home-team">
+                    <img class="team-logo" height="100px" [src]="match.homeTeam.logo" alt="">
+                    <div class="team-info">
+                        <div>{{ match.homeTeam.name }}</div>
+                        <div class="team-score">{{ match.homeTeam.score }}</div>
+                    </div>            
+                </div>
+
+                <mat-icon>close</mat-icon>
+
+                <div class="team visitor-team">
+                    <img class="team-logo" height="100px" [src]="match.visitorTeam.logo" alt="">
+                    <div class="team-info">
+                        <div>{{ match.visitorTeam.name }}</div>
+                        <div class="team-score">{{ match.visitorTeam.score }}</div>
+                    </div>            
+                </div>
+            </div>
+
+            <div class="date">
+                {{ match.datetime | date: 'dd/MM/yyyy' }}
+            </div>
+        </div>
+    }
+</div>
+  

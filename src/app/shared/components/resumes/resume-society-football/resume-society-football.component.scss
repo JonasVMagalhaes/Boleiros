@@ -1,0 +1,45 @@
+.match {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #ccc;
+
+    .teams {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+
+        .team {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            
+            .team-logo {
+                aspect-ratio: 1 / 1;
+                height: 100%;
+                padding: 8px;
+            }
+
+            .team-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;   
+
+                .team-score {
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .visitor-team {
+            flex-direction: row-reverse;
+        }
+    }
+
+    .date {
+        color: #444;
+    }
+}
