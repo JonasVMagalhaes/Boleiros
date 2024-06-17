@@ -6,7 +6,7 @@ import { publicRouteGuard } from '@guards/public-route.guard';
 import { privateRouteGuard } from '@guards/private-route.guard';
 import { publicRoutes } from '@routes/public-routes';
 import { privateRoutes } from '@routes/private-routes';
-import { PrivateRoutesComponent } from '@views/private-routes/private-routes.component';
+import { PrivateRoutesComponent } from '@features/private-routes/private-routes.component';
 
 export const routes: Routes = [
     {

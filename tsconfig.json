@@ -39,8 +39,7 @@
       "@services/*": ["app/shared/services/*"],
       "@providers/*": ["app/shared/providers/*"],
       "@utils/*": ["app/shared/utils/*"],
-      "@validators/*": ["app/shared/validators/*"],
-      "@views/*": ["app/shared/views/*"],
+      "@validators/*": ["app/shared/validators/*"]
     }
   },
   "angularCompilerOptions": {
