@@ -11,9 +11,9 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 export class HomeComponent {
   protected readonly RouteEnum = RouteEnum;
 
-  constructor(private readonly routeUtils: RouteUtilsService) {}
+  // constructor(private readonly routeUtils: RouteUtilsService) {}
 
   goTo(path: RouteEnum): void {
-    this.routeUtils.goTo(path);
+    // this.routeUtils.goTo(path);
   }
 }

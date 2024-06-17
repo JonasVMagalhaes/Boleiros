@@ -4,7 +4,10 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from
 
 import { HttpClientMock } from '@assets/mocks/http-client-mock';
 
-@NgModule({ declarations: [], imports: [CommonModule], providers: [
+@NgModule({
+    declarations: [],
+    imports: [CommonModule],
+    providers: [
         provideHttpClient(
             withFetch(),
             withInterceptorsFromDi()
@@ -13,5 +16,6 @@ import { HttpClientMock } from '@assets/mocks/http-client-mock';
             provide: HttpClient,
             useClass: HttpClientMock
         },
-    ] })
+    ]
+})
 export class HttpClientAdapterModule { }

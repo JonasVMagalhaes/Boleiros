@@ -5,6 +5,7 @@ import { PrivateFooterComponent } from './private-footer.component';
 
 @NgModule({
   declarations: [PrivateFooterComponent],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  exports: [PrivateFooterComponent]
 })
 export class PrivatyFooterModule { }

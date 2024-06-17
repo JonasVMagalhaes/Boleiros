@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvatarComponent } from './avatar.component';
+import { PrivateRoutesComponent } from './public-routes.component';
 
-describe('AvatarComponent', () => {
-  let component: AvatarComponent;
-  let fixture: ComponentFixture<AvatarComponent>;
+describe('PrivateRoutesComponent', () => {
+  let component: PrivateRoutesComponent;
+  let fixture: ComponentFixture<PrivateRoutesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AvatarComponent]
+      imports: [PrivateRoutesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AvatarComponent);
+    fixture = TestBed.createComponent(PrivateRoutesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
