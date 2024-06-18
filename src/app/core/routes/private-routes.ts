@@ -1,5 +1,5 @@
 import { RouteEnum } from '@enums/routes/route.enum';
-import { GameComponent } from '@features/game/game.component';
+import { GameFootballSocietyComponent } from '@features/game-football-society/game-football-society.component';
 import { HomeComponent } from '@features/home/home.component';
 import { RegisterGameComponent } from '@features/register-game/register-game.component';
 import { TeamComponent } from '@features/team/team.component';
@@ -19,6 +19,6 @@ export const privateRoutes = [
   },
   {
     path: RouteEnum.GAME,
-    component: GameComponent,
+    component: GameFootballSocietyComponent,
   },
 ]

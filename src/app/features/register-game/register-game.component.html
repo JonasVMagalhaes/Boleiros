@@ -1,4 +1,21 @@
-<app-button 
-    id="register-game-button-9smnm6Ds"
-    label="Confirmar"
-    (click)="goTo(RouteEnum.GAME)"/>
+<div class="container">
+    <form action="">
+        <mat-form-field>
+            <mat-label>Time da casa</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Time visitante</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Data do jogo</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+    </form>
+
+    <app-button 
+        id="register-game-button-9smnm6Ds"
+        label="Confirmar"
+        (click)="goTo(RouteEnum.GAME)"/>
+</div>
