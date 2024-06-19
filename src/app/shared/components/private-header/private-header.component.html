@@ -4,4 +4,10 @@
     </button>
 
     <span>{{ privateHeaderService.subs.title$ | async }}</span>
+
+    <div class="spacer"></div>
+
+    <button mat-icon-button class="menu-icon menu-game" *ngIf="isRoute(ROUTE_ENUM.GAME)">
+        <mat-icon>groups</mat-icon>
+    </button>
 </mat-toolbar>

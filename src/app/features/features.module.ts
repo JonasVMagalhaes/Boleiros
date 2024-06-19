@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { GameFootballSocietyModule } from './game-football-society/game-football-society.module';
 import { RegisterGameModule } from './register-game/register-game.module';
+import { PlayerModule } from './player/player.module';
 
 @NgModule({
     imports: [
@@ -13,7 +13,8 @@ import { RegisterGameModule } from './register-game/register-game.module';
         LoginModule,
         HomeModule,
         RegisterGameModule,
-        GameFootballSocietyModule
+        GameFootballSocietyModule,
+        PlayerModule
     ],
     providers: [],
     exports: [SharedModule]

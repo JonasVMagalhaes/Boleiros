@@ -8,6 +8,7 @@ import { PrivateHeaderModule } from './private-header/private-header.module';
 import { PrivatyFooterModule } from './private-footer/private-footer.module';
 import { ToastModule } from './toast/toast.module';
 import { ResumesModule } from './resumes/resumes.module';
+import { PlayerCardModule } from './player-card/player-card.module';
 
 @NgModule({
   exports: [
@@ -18,7 +19,8 @@ import { ResumesModule } from './resumes/resumes.module';
     PrivateHeaderModule,
     PrivatyFooterModule,
     ToastModule,
-    ResumesModule
+    ResumesModule,
+    PlayerCardModule
   ]
 })
 export class ComponentsModule { }
