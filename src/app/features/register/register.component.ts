@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { FormValidator } from '@utils/form-validators/form-validators';
-import { RouteUtilsService } from '@utils/route/route-utils';
 
 @Component({
   selector: 'app-register',
@@ -37,9 +37,9 @@ export class RegisterComponent {
     ])
   });
 
-  constructor(private readonly routerUtils: RouteUtilsService) { }
+  constructor(private readonly router: Router) { }
 
   protected goTo(path: RouteEnum): void {
-    this.routerUtils.goTo(path);
+    this.router.navigate([path]);
   }
 }

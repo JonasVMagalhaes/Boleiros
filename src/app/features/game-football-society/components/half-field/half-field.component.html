@@ -1,32 +1,32 @@
 <div class="half-field" [ngClass]="{'invert' : invert}">
     <div class="gol-area-line">
-        <div class="goalkeeper">
-            <p>Jonas</p>
+        <div class="player-container-gk goalkeeper">
+            <app-player-icon [invert]="invert"/>
         </div>
     </div>
 
-    <div class="central-defender">
-        <p>Wilker</p>
+    <div class="player-container central-defender">
+        <app-player-icon [invert]="invert"/>
     </div>
 
-    <div class="right-defender">
-        <p>Vanderson</p>
+    <div class="player-container right-defender">
+        <app-player-icon [invert]="invert" [attendanceConfirmed]="true"/>
     </div>
 
-    <div class="left-defender">
-        <p>Moisés</p>
+    <div class="player-container left-defender">
+        <app-player-icon [invert]="invert"/>
     </div>
 
-    <div class="right-wing">
-        <p>João</p>
+    <div class="player-container right-wing">
+        <app-player-icon [invert]="invert"/>
     </div>
 
-    <div class="left-wing">
-        <p>Adenilson</p>
+    <div class="player-container left-wing">
+        <app-player-icon [invert]="invert" [attendanceConfirmed]="true"/>
     </div>
 
-    <div class="striker">
-        <p>Felipe</p>
+    <div class="player-container striker">
+        <app-player-icon [invert]="invert" [attendanceConfirmed]="true"/>
     </div>
     <div class="central-line"></div>
 </div>

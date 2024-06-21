@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
-import { RouteUtilsService } from '@utils/route/route-utils';
 
 @Component({
   selector: 'app-recovery-password',
@@ -24,9 +24,9 @@ export class RecoveryPasswordComponent {
     ])
   });
 
-  constructor(private readonly routeUtils: RouteUtilsService) {}
+  constructor(private readonly router: Router) {}
 
   goTo(path: RouteEnum): void {
-    this.routeUtils.goTo(path);
+    this.router.navigate([path]);
   }
 }

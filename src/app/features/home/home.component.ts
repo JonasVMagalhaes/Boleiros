@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResumeSocietyFootball } from '@components/resumes/models/resume-society-football.interface';
 import { ResumeSports } from '@components/resumes/models/resume-sports.interface';
 
 import { RouteEnum } from '@enums/routes/route.enum';
-import { RouteUtilsService } from '@utils/route/route-utils';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,7 @@ export class HomeComponent {
   protected readonly RouteEnum = RouteEnum;
   protected readonly matchs: ResumeSports<ResumeSocietyFootball>[] = [
     {
+      id: "1",
       homeTeam: {
         id: "",
         logo: "../../../../../assets/images/features-home-logo/logo 1.png",
@@ -30,6 +31,7 @@ export class HomeComponent {
       datetime: new Date("06/11/2024")
     },
     {
+      id: "2",
       homeTeam: {
         id: "",
         logo: "../../../../../assets/images/features-home-logo/logo 4.png",
@@ -44,6 +46,7 @@ export class HomeComponent {
       datetime: new Date("06/18/2024")
     },
     {
+      id: "3",
       homeTeam: {
         id: "",
         logo: "../../../../../assets/images/features-home-logo/logo 1.png",
@@ -58,6 +61,7 @@ export class HomeComponent {
       datetime: new Date("06/25/2024")
     },
     {
+      id: "4",
       homeTeam: {
         id: "",
         logo: "../../../../../assets/images/features-home-logo/logo 4.png",
@@ -73,9 +77,9 @@ export class HomeComponent {
     }
   ];
 
-  constructor(private readonly routeUtils: RouteUtilsService) {}
+  constructor(private readonly router: Router) {}
 
   goTo(path: RouteEnum): void {
-    this.routeUtils.goTo(path);
+    this.router.navigate([path]);
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RouteEnum } from '@enums/routes/route.enum';
-import { RouteUtilsService } from '@utils/route/route-utils';
 
 @Component({
   selector: 'app-register-game',
@@ -11,10 +11,10 @@ import { RouteUtilsService } from '@utils/route/route-utils';
 export class RegisterGameComponent {
   protected readonly RouteEnum = RouteEnum;
 
-  constructor(private readonly routeUtils: RouteUtilsService) { }
+  constructor(private readonly router: Router) { }
 
   goTo(path: RouteEnum): void {
-    this.routeUtils.goTo(path);
+    this.router.navigate([path]);
   }
 
 }

@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './player.component.scss'
 })
 export class PlayerComponent {
-
 }

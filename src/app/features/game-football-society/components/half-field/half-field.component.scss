@@ -15,6 +15,17 @@ $border-line-style: 1px solid $line-colors;
     height: 100%;
     position: relative;
 
+    .player-container-gk {
+        width: 35%;
+        aspect-ratio: 1/1;
+    }
+
+    .player-container {
+        width: 15%;
+        aspect-ratio: 1/1;
+        z-index: 1;
+    }
+
     .gol-area-line {
         width: 40%;
         aspect-ratio: 2/1;
@@ -25,7 +36,7 @@ $border-line-style: 1px solid $line-colors;
         display: grid;
 
         // Reorganizar para component do jogador
-        .goalkeeper {
+        .goalkeeper {            
             justify-self: center;
             align-self: center;
         }

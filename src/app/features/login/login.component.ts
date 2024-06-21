@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { InputType } from '@components/forms/input/models/input-type.interface';
 import { ToastService } from '@components/toast/services/toast.service';
 import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
-import { RouteUtilsService } from '@utils/route/route-utils';
 import { CustomValidators } from '@validators/validators';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   protected readonly INPUT_TYPE = InputType;
   protected readonly RouteEnum = RouteEnum;
 
-  constructor(private readonly routeUtils: RouteUtilsService,
+  constructor(private readonly router: Router,
               private readonly authService: AuthService,
               private readonly toastService: ToastService) { }
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   goTo(path: RouteEnum): void {
-    this.routeUtils.goTo(path);
+    this.router.navigate([path]);
   }
 
   signIn(): void {
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: () => {
           this.toastService.toast({ summary: "Sucesso", message: "Authenticado com sucesso" });
-          this.routeUtils.goTo(RouteEnum.HOME);
+          this.router.navigate([RouteEnum.HOME]);
         },
         error: (err: Error) => {
           this.toastService.toast({ summary: "Erro", message: err.message });

@@ -1,6 +1,6 @@
 <div class="container">
     @for (match of matchs; track match) {
-        <div class="match">
+        <div class="match" (click)="goTo(RouteEnum.GAME_DETAILS, match.id)">
             <div class="teams">
                 <div class="team home-team">
                     <img class="team-logo" height="100px" [src]="match.homeTeam.logo" alt="">

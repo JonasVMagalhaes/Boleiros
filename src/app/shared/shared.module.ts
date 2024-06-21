@@ -6,7 +6,6 @@ import { CacheService } from '@services/cache/cache.service';
 import { EncryptionService } from '@services/encryption/encryption.service';
 import { AuthInterceptor } from '@services/http-interceptor/interceptor.service';
 import { CheckUpdatesService } from '@services/sw-updates/check-updates.service';
-import { RouteUtilsService } from '@utils/route/route-utils';
 
 @NgModule({
   imports: [HttpClientAdapterModule],
@@ -15,8 +14,7 @@ import { RouteUtilsService } from '@utils/route/route-utils';
     CacheService,
     EncryptionService,
     AuthInterceptor,
-    CheckUpdatesService,
-    RouteUtilsService
+    CheckUpdatesService
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,10 @@
+<div class="container"
+    [ngStyle]="{
+        'transform': invert ? 'rotate(180deg)' : ''
+    }"
+    [ngClass]="{
+        'attendance-confirmed': attendanceConfirmed,
+        'attendance-not-confirmed': !attendanceConfirmed
+    }">
+    <img src="../../../../assets/images/features-player-avatar/avatar.png" width="100%" height="100%" alt="">
+</div>

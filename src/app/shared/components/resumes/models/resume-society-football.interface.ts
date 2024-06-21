@@ -1,4 +1,5 @@
 export interface ResumeSocietyFootball {
+    id: string;
     homeTeam: {
         id: string;
         name: string;

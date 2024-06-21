@@ -6,6 +6,7 @@ export enum RouteEnum {
     RECOVERY_PASSWORD = 'recovery-password',
     RESET_PASSWORD = 'reset-password',
     GAME = 'game',
+    GAME_DETAILS = 'game-details',
     PLAYER = 'player',
     HOME = 'home',
     TEAM = 'team'

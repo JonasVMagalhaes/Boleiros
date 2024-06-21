@@ -6,6 +6,7 @@ import { HomeModule } from './home/home.module';
 import { GameFootballSocietyModule } from './game-football-society/game-football-society.module';
 import { RegisterGameModule } from './register-game/register-game.module';
 import { PlayerModule } from './player/player.module';
+import { GameDetailsModule } from './game-details/game-details.module';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { PlayerModule } from './player/player.module';
         HomeModule,
         RegisterGameModule,
         GameFootballSocietyModule,
-        PlayerModule
+        PlayerModule,
+        GameDetailsModule
     ],
     providers: [],
     exports: [SharedModule]
