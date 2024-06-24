@@ -1,1 +1,18 @@
-<p>game-details works!</p>
+<div class="container">
+    <mat-accordion multi>
+        @for (player of gameDetails.players; track player) {
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{ player.name }}</mat-panel-title>
+                    <mat-panel-description>
+                        {{ player.position }}
+                        <div class="icons">
+                            <mat-icon [style.color]="player.confirmatedAttendance ? 'green' : 'red'">attach_money</mat-icon>
+                            <mat-icon [style.color]="player.confirmatedAttendance ? 'green' : 'red'">sports_soccer</mat-icon>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+        }
+    </mat-accordion>
+</div>
