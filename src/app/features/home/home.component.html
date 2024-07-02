@@ -1,10 +1,14 @@
 <div class="container">
-    <app-resume-society-football [matchs]="matchs"/>
+    <mat-accordion multi>
+        @for (match of matchs; track match) {
+            <app-resume-society-football [matchs]="matchs"/>
+        }
 
-    <app-button
-        button-primary
-        class="button-new-match"
-        id="home-button-register-game-9smnm6Ds"
-        label="Registrar novo racha"
-        (click)="goTo(RouteEnum.REGISTER_GAME)"/>
+        <app-button
+            button-primary
+            class="button-new-match"
+            id="home-button-register-game-9smnm6Ds"
+            label="Registrar novo racha"
+            (click)="goTo(RouteEnum.REGISTER_GAME)"/>
+    </mat-accordion>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { KeysCacheEnum } from '@enums/keys/keys-cache.enum';
-import { PrimitiveSignInResponse } from '@models/primitives/sign-in/sign-in-response.interface';
+import { Auth } from '../dtos/auth';
 import { CacheService } from '@services/cache/cache.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class AuthStoreService {
 
   constructor(private readonly cacheService: CacheService) { }
 
-  save(value: PrimitiveSignInResponse): void {
+  save(value: Auth): void {
     this.cacheService.save(this.keyCache, JSON.stringify(value));
   }
 }

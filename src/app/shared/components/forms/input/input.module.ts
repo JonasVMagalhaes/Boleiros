@@ -1,6 +1,7 @@
-import { Input, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 import { InputComponent } from './input.component';
 import { InputMaskDirective } from './input-mask.directive';
@@ -12,7 +13,8 @@ import { InputMaskDirective } from './input-mask.directive';
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        MatInputModule
     ],
     exports: [
         InputComponent

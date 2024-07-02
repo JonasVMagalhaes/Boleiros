@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map, of, switchMap, tap } from 'rxjs';
 
 import { Primitive } from '@enums/primitives/primitive.enum';
 import { PrimitiveSignInResponse } from '@models/primitives/sign-in/sign-in-response.interface';
 import { PrimitiveAuthResponse } from '@models/primitives/auth/auth-response.interface';
-import { AuthCredentials } from '../models/auth-credentials.interface';
-import { Auth } from '../models/auth-interface';
-import { AuthDto } from '../dtos/auth-dto';
-import { Authenticated } from '../models/authenticated-interface';
-import { AuthenticatedDto } from '../dtos/authenticated-dto';
 import { SignInterceptorsService } from '../interceptors/sign-interceptor';
+import { Auth } from '../dtos/auth';
+import { Authenticated } from '../dtos/authenticated';
+import { AuthCredentials } from '../models/auth-credentials.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,17 +21,19 @@ export class AuthService {
   isAuthenticated(): Observable<Authenticated> {
     return this.httpClient.get<PrimitiveAuthResponse>(Primitive.AUTH)
       .pipe(
-        map(response => AuthenticatedDto.fromDto(response))
+        map(response => Authenticated.fromDto(response))
       );
   }
 
   signIn(credencials: AuthCredentials): Observable<Auth> {
-    return this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, AuthDto.toDto(credencials))
+    return of(credencials)
       .pipe(
+        map(Auth.toDto),
+        switchMap((credentialsDto) => this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, credentialsDto)),
+        map(Auth.fromDto),
         tap({
           next: (response) => this.signInterceptorsService.executeSuccess(response)
         }),
-        map(response => AuthDto.fromDto(response))
       );
   }
 }

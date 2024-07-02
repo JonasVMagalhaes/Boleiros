@@ -38,7 +38,7 @@ class MockPrimitives {
         }
 
         if(validUsers.some((validUser: any) => validUser.username === body.username && validUser.password === body.password)){
-            return of({ token: '123456789', expireTime: new Date().getDate() });
+            return of({ access_token: '123456789', expires_in: new Date().getDate() });
         } else {            
             return throwError(() => errorUnauthorized);
         }

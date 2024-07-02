@@ -1,4 +1,4 @@
 export interface PrimitiveSignInResponse {
-    token: string;
-    expireTime: number;
+    access_token: string;
+    expires_in: number;
 }

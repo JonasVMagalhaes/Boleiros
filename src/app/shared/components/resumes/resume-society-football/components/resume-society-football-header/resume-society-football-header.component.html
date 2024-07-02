@@ -1,0 +1,17 @@
+<div class="display-score">
+    <div class="display-score-logo-and-name display-score-logo-and-name-left">
+        <img class="team-logo" [src]="match.homeTeam.logo" alt="">
+        <span>{{ match.homeTeam.abbreviate }}</span>
+    </div>
+    
+    <div class="score">
+        <span>{{ match.homeTeam.score }}</span>
+        <mat-icon>close</mat-icon>
+        <span>{{ match.visitorTeam.score }}</span>
+    </div>
+
+    <div class="display-score-logo-and-name display-score-logo-and-name-right">
+        <span>{{ match.visitorTeam.abbreviate }}</span>
+        <img class="team-logo" [src]="match.visitorTeam.logo" alt="">
+    </div>
+</div>

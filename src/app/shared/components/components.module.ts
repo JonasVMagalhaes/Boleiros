@@ -10,11 +10,13 @@ import { ToastModule } from './toast/toast.module';
 import { ResumesModule } from './resumes/resumes.module';
 import { PlayerCardModule } from './player-card/player-card.module';
 import { PlayerIconModule } from './player-icon/player-icon.module';
+import { ExpansionPanelModule } from './expansion-panel/expansion-panel.module';
 
 @NgModule({
   exports: [
     AvatarModule,
     ButtonModule,
+    ExpansionPanelModule,
     ComponentsFormModule,
     HintErrorModule,
     PrivateHeaderModule,

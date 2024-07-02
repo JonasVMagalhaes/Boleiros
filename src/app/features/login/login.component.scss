@@ -10,4 +10,20 @@
     .login_logo {
         max-width: 60%;
     }
+
+    .form-group {
+        display: grid;
+        justify-content: center;
+        gap: 8px;
+        
+        .button-recovery-password {
+            text-align: center;
+        }
+    }
+
+    .group-button {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
 }

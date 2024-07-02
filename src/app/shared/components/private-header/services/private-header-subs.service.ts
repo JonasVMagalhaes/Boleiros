@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Signal, signal } from "@angular/core";
 
 import { BehaviorSubject, Observable } from "rxjs";
 
@@ -6,13 +6,5 @@ import { BehaviorSubject, Observable } from "rxjs";
     providedIn: 'root'
 })
 export class PrivateHeaderSubsService {
-    private readonly titleSub$: BehaviorSubject<string> = new BehaviorSubject("Home");
-
-    public get title$(): Observable<string> {
-        return this.titleSub$.asObservable();
-    }
-
-    public set title$(value: string) {
-        this.titleSub$.next(value);
-    }
+    readonly titleSub: Signal<string> = signal("Home");
 }

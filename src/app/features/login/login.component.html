@@ -1,7 +1,7 @@
 <div class="container">
     <img class="login_logo" src="../../../assets/images/login_logo_boleiros.png" alt="">
 
-    <form [formGroup]="loginFormGroup">
+    <form [formGroup]="loginFormGroup" class="form-group">
         <app-input
             id="login-input-username-bBjsp9BX"
             formControlName="username"
@@ -15,14 +15,13 @@
 
         <app-button 
             button-link
+            class="button-recovery-password"
             id="login-button-recovery-password-Ta8NoqmU"
             label="Recuperar senha"
             (click)="goTo(RouteEnum.RECOVERY_PASSWORD)"/>
     </form>
 
-    <div class="group-button">
-        
-    
+    <div class="group-button">     
         <app-button
             button-primary
             id="login-button-TKfH2DgB"

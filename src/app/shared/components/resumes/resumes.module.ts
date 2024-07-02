@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
 
-import { ResumeSocietyFootballComponent } from './resume-society-football/resume-society-football.component';
-import { MatIconModule } from '@angular/material/icon';
+import { ResumeSocietyFootballModule } from './resume-society-football/resume-society-football.module';
 
 @NgModule({
-  declarations: [ResumeSocietyFootballComponent],
-  imports: [
-    CommonModule,
-    MatListModule,
-    MatIconModule
-  ],
-  exports: [ResumeSocietyFootballComponent]
+  imports: [CommonModule],
+  exports: [
+    ResumeSocietyFootballModule
+  ]
 })
 export class ResumesModule { }

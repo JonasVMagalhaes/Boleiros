@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-
 import { UserResponse } from "@entities/user/models/user-response.interface";
-import { User } from "@entities/user/models/user.interface";
 
-@Injectable()
-export class UserDtoService {
+export class User {
+    id: string;
+
+    constructor(user: UserResponse) {
+        this.id = user.id;
+    }
+
     from(user: UserResponse): User  {
-        return {
-            id: user.id
-        }
+        return new User(user);
     }
 }

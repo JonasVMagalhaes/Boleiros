@@ -23,7 +23,7 @@ import { CoreModule } from './core/core.module';
                 path: RouteEnum.EMPTY,
                 component: PrivateRoutesComponent,
                 loadChildren: () => import('@features/private-routes/private-routes.module').then(m => m.PrivateRoutesModule),
-                canActivate: [privateRouteGuard]
+                canActivateChild: [privateRouteGuard]
             }
         ]),
         SharedModule,
