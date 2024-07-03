@@ -32,15 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(): void {
-    this.authService.signIn(this.loginFormGroup.getRawValue())
+    this.authService.signIn(this.loginFormGroup)
       .subscribe({
         next: () => {
           this.messageService.toast('Authenticado com sucesso');
           this.router.navigate([RouteEnum.HOME]);
         },
-        error: (err: Error) => {
-          this.messageService.toast(err.message);
-        }
+        error: (err: Error) => this.messageService.toast(err.message)
       });
   }
 

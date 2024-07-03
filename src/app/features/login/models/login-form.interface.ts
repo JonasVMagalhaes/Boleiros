@@ -1,6 +1,6 @@
-import { AbstractControl } from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 export interface LoginForm {
-    password: AbstractControl<any, any>;
-    username: AbstractControl<any, any>;
+    password: FormControl<string | null>;
+    username: FormControl<string | null>;
 }

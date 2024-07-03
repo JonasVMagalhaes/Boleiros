@@ -12,4 +12,4 @@ import { UserService } from './services/user.service';
     UserStoreService,
   ]
 })
-export class UserModule { }
+export class UserEntityModule { }

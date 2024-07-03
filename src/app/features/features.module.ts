@@ -7,11 +7,13 @@ import { GameFootballSocietyModule } from './game-football-society/game-football
 import { RegisterGameModule } from './register-game/register-game.module';
 import { PlayerModule } from './player/player.module';
 import { GameDetailsModule } from './game-details/game-details.module';
+import { RegisterModule } from './register/register.module';
 
 @NgModule({
     imports: [
         SharedModule,
         LoginModule,
+        RegisterModule,
         HomeModule,
         RegisterGameModule,
         GameFootballSocietyModule,

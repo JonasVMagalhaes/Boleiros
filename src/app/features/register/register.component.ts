@@ -1,45 +1,66 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { FormValidator } from '@utils/form-validators/form-validators';
+import { MessageService } from '@services/message/message.service';
+import { RegisterForm } from './models/register-form.interface';
+import { RegisterService } from '@entities/register/services/register.service';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    SharedModule
-  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  protected registerFormGroup: FormGroup<RegisterForm>;
   protected readonly RouteEnum = RouteEnum;
-  protected readonly registerFormGroup = new FormGroup({
-    username: new FormControl(null, [
-      Validators.minLength(6),
-      Validators.required
-    ]),
-    email: new FormControl(null, [
-      Validators.required,
-      Validators.email
-    ]),
-    password: new FormControl(null, [
-      Validators.required,
-      FormValidator.passwordStrongValidator
-    ]),
-    confirmPassword: new FormControl(null, [
-      Validators.required,
-      FormValidator.confirmPasswordValidator('password')
-    ])
-  });
 
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router,
+              private readonly messageService: MessageService,
+              private readonly registerService: RegisterService
+  ) { }
 
-  protected goTo(path: RouteEnum): void {
+  ngOnInit(): void {
+    this.createFormGroup();
+  }
+
+  goTo(path: RouteEnum): void {
     this.router.navigate([path]);
+  }
+
+  register(): void {
+    this.registerService.register(this.registerFormGroup)
+      .subscribe({
+        next: () => {
+          this.messageService.toast('Usuário criado com sucesso');
+          this.router.navigate([RouteEnum.HOME]);
+        },
+        error: (err: Error) => {
+          this.messageService.toast(err.message);
+        }
+      });
+  }
+
+  private createFormGroup(): void {
+    this.registerFormGroup = new FormGroup<RegisterForm>({
+      username: new FormControl('', [
+        Validators.minLength(3),
+        Validators.required
+      ]),
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl(null, [
+        Validators.required,
+        FormValidator.passwordStrongValidator
+      ]),
+      confirmPassword: new FormControl(null, [
+        Validators.required,
+        FormValidator.confirmPasswordValidator('password')
+      ])
+    });
   }
 }

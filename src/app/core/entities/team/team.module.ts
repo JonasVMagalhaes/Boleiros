@@ -9,4 +9,4 @@ import { TeamStoreService } from './store/team-store.service';
   imports: [CommonModule],
   providers: [TeamService, TeamStoreService]
 })
-export class TeamModule { }
+export class TeamEntityModule { }

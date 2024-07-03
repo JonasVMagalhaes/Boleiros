@@ -1,4 +1,7 @@
-<form action="" [formGroup]="registerFormGroup">
+<div class="container">
+    <img class="login_logo" src="../../../assets/images/login_logo_boleiros.png" alt="">
+
+    <form [formGroup]="registerFormGroup" class="form-group">
     <app-input
         id="register-input-username-72w5z2ui"
         formControlName="username"
@@ -8,7 +11,7 @@
         [control]="registerFormGroup.controls['username']"
         [errorMessages]="{
             required: 'Este campo é obrigatório',
-            minlength: 'O tamanho mínimo desse campo são 6 caracteres'
+            minlength: 'O tamanho mínimo desse campo são 3 caracteres'
         }"></app-hint-error>
 
     <app-input
@@ -50,9 +53,19 @@
             required: 'Este campo é obrigatório',
             passwordMismatch: 'As senhas não coincidem'
         }"></app-hint-error>
+    </form>
 
-    <app-button 
-        id="login-button-cp2SBdku"
-        label="Retornar"
-        (click)="goTo(RouteEnum.LOGIN)"/>
-</form>
+    <div class="group-button">  
+        <app-button
+            button-primary
+            id="login-button-cp2SBdku"
+            label="Cadastrar"
+            (click)="register()"/>
+
+        <app-button
+            button-link
+            id="login-button-cp2SBdku"
+            label="Retornar"
+            (click)="goTo(RouteEnum.LOGIN)"/>
+    </div>    
+</div>

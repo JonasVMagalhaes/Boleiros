@@ -1,6 +1,7 @@
 import { PrimitiveSignInResponse } from "@models/primitives/sign-in/sign-in-response.interface";
 import { PrimitiveSignInRequest } from "@models/primitives/sign-in/sign-in-request.interface";
-import { AuthCredentials } from "../models/auth-credentials.interface";
+import { LoginForm } from "@features/login/models/login-form.interface";
+import { FormGroup } from "@angular/forms";
 
 export class Auth {
     acessToken: string;
@@ -11,10 +12,10 @@ export class Auth {
         this.expireTime = auth.expires_in;
     }
 
-    static toDto(authCredentials: AuthCredentials): PrimitiveSignInRequest {
+    static toDto(authCredentials: FormGroup<LoginForm>): PrimitiveSignInRequest {
         return {
-            username: authCredentials.username,
-            password: authCredentials.password
+            username: authCredentials.get("username")?.value || '',
+            password: authCredentials.get("password")?.value || '',
         }
     }
 

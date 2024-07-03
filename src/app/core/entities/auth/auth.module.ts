@@ -18,4 +18,4 @@ import { AuthStoreService } from './store/auth-store.service';
     SignInterceptorsService
   ]
 })
-export class AuthModule { }
+export class AuthEntityModule { }

@@ -2,16 +2,18 @@ import { HttpClientAdapterModule } from '@adapters/http-client/http-client-adapt
 import { NgModule } from '@angular/core';
 
 
-import { AuthModule } from '@entities/auth/auth.module';
-import { TeamModule } from '@entities/team/team.module';
-import { UserModule } from '@entities/user/user.module';
+import { AuthEntityModule } from '@entities/auth/auth.module';
+import { RegisterEntityModule } from '@entities/register/register.module';
+import { TeamEntityModule } from '@entities/team/team.module';
+import { UserEntityModule } from '@entities/user/user.module';
 
 @NgModule({
   exports: [
     HttpClientAdapterModule,
-    AuthModule,
-    TeamModule,
-    UserModule,
+    AuthEntityModule,
+    RegisterEntityModule,
+    TeamEntityModule,
+    UserEntityModule,
   ]
 })
 export class CoreModule { }
