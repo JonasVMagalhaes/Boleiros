@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+
+import { AuthCredentials } from "@entities/auth/models/auth-credentials.interface";
 import { Primitive } from "@enums/primitives/primitive.enum";
 import { SignCodeErrors } from "@enums/primitives/sign-code-errors-enum";
-import { PrimitiveAuthResponse } from "@models/primitives/auth/auth-response.interface";
+import { PrimitiveRegisterResponse } from "@models/primitives/register/register-response.interface";
 import { PrimitiveSignInResponse } from "@models/primitives/sign-in/sign-in-response.interface";
 import { ErrorRequisition } from "@models/requisitions/error-requisition";
 import { Observable, of, throwError } from "rxjs";
@@ -11,8 +13,8 @@ import { Observable, of, throwError } from "rxjs";
 export class HttpClientMock extends HttpClient {
     override post(url: string, body: any | null, options: any): Observable<any> {
         switch(url) {
-            case Primitive.AUTH: return MockPrimitives.auth(options);
             case Primitive.SIGN: return MockPrimitives.sign(body);
+            case Primitive.REGISTER: return MockPrimitives.register(body);
             default: super.post(url, body, options);
         }
 
@@ -21,11 +23,7 @@ export class HttpClientMock extends HttpClient {
 }
 
 class MockPrimitives {
-    static auth(options: any): Observable<PrimitiveAuthResponse> {
-        return of({ auth: true });
-    }
-
-    static sign(body: any | null): Observable<PrimitiveSignInResponse> {
+    static sign(body: AuthCredentials): Observable<PrimitiveSignInResponse> {
         const validUsers = [
             { username: "jonas", password: "123" },
             { username: "moises", password: "124" }
@@ -41,7 +39,10 @@ class MockPrimitives {
             return of({ access_token: '123456789', expires_in: new Date().getDate() });
         } else {            
             return throwError(() => errorUnauthorized);
-        }
-        
+        }        
+    }
+
+    static register(body: any | null): Observable<PrimitiveRegisterResponse> {
+        return of({});
     }
 }

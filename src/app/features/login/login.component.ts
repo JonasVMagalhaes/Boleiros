@@ -3,11 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { InputType } from '@components/forms/input/models/input-type.interface';
-import { ToastService } from '@components/toast/services/toast.service';
-import { AuthCredentials } from '@entities/auth/models/auth-credentials.interface';
 import { AuthService } from '@entities/auth/services/auth.service';
 import { RouteEnum } from '@enums/routes/route.enum';
 import { CustomValidators } from '@validators/validators';
+import { LoginForm } from './models/login-form.interface';
+import { MessageService } from '@services/message/message.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +15,13 @@ import { CustomValidators } from '@validators/validators';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {  
-  protected loginFormGroup: FormGroup<AuthCredentials>;
+  protected loginFormGroup: FormGroup<LoginForm>;
   protected readonly INPUT_TYPE = InputType;
   protected readonly RouteEnum = RouteEnum;
 
   constructor(private readonly router: Router,
               private readonly authService: AuthService,
-              private readonly toastService: ToastService) { }
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
     this.createFormGroup();
@@ -35,17 +35,17 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(this.loginFormGroup.getRawValue())
       .subscribe({
         next: () => {
-          this.toastService.toast({ summary: "Sucesso", message: "Authenticado com sucesso" });
+          this.messageService.toast('Authenticado com sucesso');
           this.router.navigate([RouteEnum.HOME]);
         },
         error: (err: Error) => {
-          this.toastService.toast({ summary: "Erro", message: err.message });
+          this.messageService.toast(err.message);
         }
       });
   }
 
   private createFormGroup(): void {
-    this.loginFormGroup = new FormGroup<AuthCredentials>({
+    this.loginFormGroup = new FormGroup<LoginForm>({
       username: new FormControl(null, [
         Validators.required
       ]),

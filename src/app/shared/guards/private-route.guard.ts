@@ -16,7 +16,7 @@ export const privateRouteGuard: CanActivateFn = (route, state) => {
     return cacheService.get(KeysCacheEnum.AUTH)
       .pipe(
         tap(key => !key && router.navigate([RouteEnum.LOGIN])),
-        map(authenticated => Boolean(authenticated)),
+        map(Boolean),
       );
   } else {
     return of(false);

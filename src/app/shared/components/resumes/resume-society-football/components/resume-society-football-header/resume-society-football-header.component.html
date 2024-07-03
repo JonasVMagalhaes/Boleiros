@@ -1,7 +1,8 @@
 <div class="display-score">
-    <div class="display-score-logo-and-name display-score-logo-and-name-left">
+    <span>17/10/2017</span>
+
+    <div class="logo-and-name logo-and-name-left">
         <img class="team-logo" [src]="match.homeTeam.logo" alt="">
-        <span>{{ match.homeTeam.abbreviate }}</span>
     </div>
     
     <div class="score">
@@ -10,8 +11,7 @@
         <span>{{ match.visitorTeam.score }}</span>
     </div>
 
-    <div class="display-score-logo-and-name display-score-logo-and-name-right">
-        <span>{{ match.visitorTeam.abbreviate }}</span>
+    <div class="logo-and-name logo-and-name-right">
         <img class="team-logo" [src]="match.visitorTeam.logo" alt="">
     </div>
 </div>

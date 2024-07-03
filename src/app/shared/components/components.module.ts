@@ -6,7 +6,6 @@ import { ComponentsFormModule } from './forms/components-form.module';
 import { HintErrorModule } from './hint-error/hint-error.module';
 import { PrivateHeaderModule } from './private-header/private-header.module';
 import { PrivatyFooterModule } from './private-footer/private-footer.module';
-import { ToastModule } from './toast/toast.module';
 import { ResumesModule } from './resumes/resumes.module';
 import { PlayerCardModule } from './player-card/player-card.module';
 import { PlayerIconModule } from './player-icon/player-icon.module';
@@ -21,7 +20,6 @@ import { ExpansionPanelModule } from './expansion-panel/expansion-panel.module';
     HintErrorModule,
     PrivateHeaderModule,
     PrivatyFooterModule,
-    ToastModule,
     ResumesModule,
     PlayerCardModule,
     PlayerIconModule

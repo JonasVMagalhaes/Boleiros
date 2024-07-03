@@ -39,42 +39,42 @@ export class HomeComponent {
       winner: "Specter",
       datetime: new Date("06/11/2024")
     },
-    // {
-    //   id: "2",
-    //   homeTeam: {
-    //     id: "",
-    //     logo: "../../../../../assets/images/features-home-logo/logo 4.png",
-    //     name: "Galáticos",
-    //     abbreviate: "GLT",
-    //   },
-    //   visitorTeam: {
-    //     id: "",
-    //     logo: "../../../../../assets/images/features-home-logo/logo 1.png",
-    //     name: "Specter",
-    //     abbreviate: "SPT",
-    //   },
-    //   eventsGame: [],
-    //   winner: "Specter",
-    //   datetime: new Date("06/18/2024")
-    // },
-    // {
-    //   id: "3",
-    //   homeTeam: {
-    //     id: "",
-    //     logo: "../../../../../assets/images/features-home-logo/logo 1.png",
-    //     name: "Specter",
-    //     abbreviate: "SPT",
-    //   },
-    //   visitorTeam: {
-    //     id: "",
-    //     logo: "../../../../../assets/images/features-home-logo/logo 4.png",
-    //     name: "Galáticos",
-    //     abbreviate: "GLT",
-    //   },
-    //   eventsGame: [],
-    //   winner: "Specter",
-    //   datetime: new Date("06/25/2024")
-    // },
+    {
+      id: "2",
+      homeTeam: {
+        id: "",
+        logo: "../../../../../assets/images/features-home-logo/logo 4.png",
+        name: "Galáticos",
+        abbreviate: "GLT",
+      },
+      visitorTeam: {
+        id: "",
+        logo: "../../../../../assets/images/features-home-logo/logo 1.png",
+        name: "Specter",
+        abbreviate: "SPT",
+      },
+      eventsGame: [],
+      winner: "Specter",
+      datetime: new Date("06/18/2024")
+    },
+    {
+      id: "3",
+      homeTeam: {
+        id: "",
+        logo: "../../../../../assets/images/features-home-logo/logo 1.png",
+        name: "Specter",
+        abbreviate: "SPT",
+      },
+      visitorTeam: {
+        id: "",
+        logo: "../../../../../assets/images/features-home-logo/logo 4.png",
+        name: "Galáticos",
+        abbreviate: "GLT",
+      },
+      eventsGame: [],
+      winner: "Specter",
+      datetime: new Date("06/25/2024")
+    },
     // {
     //   id: "4",
     //   homeTeam: {
