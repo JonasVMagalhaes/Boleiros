@@ -37,8 +37,8 @@ export class RegisterComponent implements OnInit {
   register(): void {
     of(this.registerFormGroup)
       .pipe(
-        filter(() => this.isPasswordEquals()),
-        filter(() => this.isFormValid())
+        filter(() => this.isFormValid()),
+        filter(() => this.isPasswordEquals())
       )
       .subscribe(() => this.performRegister());
     
@@ -85,6 +85,7 @@ export class RegisterComponent implements OnInit {
     )) {
       return true;
     } else {
+      this.messageService.toast("As senhas não coincidem");
       return false;
     }
   }
@@ -93,6 +94,7 @@ export class RegisterComponent implements OnInit {
     if(this.registerFormGroup.valid) {
       return true;
     } else {
+      this.messageService.toast("Existem campos não preenchidos ou inválidos no formulário");
       return false;
     }
   }
