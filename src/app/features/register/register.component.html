@@ -14,6 +14,7 @@
 
     <app-input
         id="register-input-email-ygz0mIw1"
+        [type]="INPUT_TYPE.EMAIL"
         [formControlName]="REGISTER_FORM_ENUM.EMAIL"
         label="Email"/>
     <app-hint-error
@@ -23,6 +24,7 @@
 
     <app-input
         id="register-input-password-k936CKWU"
+        [type]="INPUT_TYPE.PASSWORD"
         [formControlName]="REGISTER_FORM_ENUM.PASSWORD"
         label="Password"/>
     <app-hint-error
@@ -32,6 +34,7 @@
 
     <app-input
         id="register-input-confirm-password-zGppqlEi"
+        [type]="INPUT_TYPE.PASSWORD"
         [formControlName]="REGISTER_FORM_ENUM.CONFIRM_PASSWORD"
         label="Confirm Password"/>
     <app-hint-error

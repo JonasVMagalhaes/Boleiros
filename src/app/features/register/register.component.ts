@@ -10,6 +10,7 @@ import { filter, of } from 'rxjs';
 import { RegisterFormEnum } from '@enums/forms/register-form.enum';
 import { RegisterValidatorsErrors } from './validators-errors/register-validators-errors';
 import { CustomValidators } from '@validators/validators';
+import { InputType } from '@components/forms/input/models/input-type.interface';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
   protected readonly ROUTE_ENUM = RouteEnum;
   protected readonly REGISTER_FORM_ENUM = RegisterFormEnum;
   protected readonly REGISTER_VALIDATORS_ERROR = RegisterValidatorsErrors;
+  protected readonly INPUT_TYPE = InputType;
 
   constructor(private readonly router: Router,
               private readonly messageService: MessageService,

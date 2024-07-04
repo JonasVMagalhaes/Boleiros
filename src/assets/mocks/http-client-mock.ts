@@ -43,6 +43,41 @@ class MockPrimitives {
     }
 
     static register(body: any | null): Observable<PrimitiveRegisterResponse> {
-        return of({});
+        const validUsers = [
+            { username: "jonas", password: "123" },
+            { username: "moises", password: "124" }
+        ]
+
+        const errorUnauthorized: ErrorRequisition<{}> = {
+            status: 401,
+            code: SignCodeErrors.CREEDENTIALS_NOT_MATCH,
+            message: "Error na criação do cadastro"
+        }
+
+        const errorServidor: ErrorRequisition<{}> = {
+            status: 500,
+            code: SignCodeErrors.INTERNAL_SERVER_ERROR,
+            message: "INTERNAL SERVER ERROR"
+        }
+
+        const errorDataBadFormatted: ErrorRequisition<{}> = {
+            status: 400,
+            code: SignCodeErrors.INTERNAL_SERVER_ERROR,
+            message: "Algum dos dados está errado"
+        }
+
+        if(body.username === "ERROR501") {
+            return throwError(() => errorServidor)
+        }
+
+        if(body.username === "ERROR400") {
+            return throwError(() => errorDataBadFormatted)
+        }
+
+        if(validUsers.some((validUser: any) => validUser.username === body.username && validUser.password === body.password)){
+            return of({ access_token: '123456789', expires_in: new Date().getDate()});
+        } else {            
+            return throwError(() => errorUnauthorized);
+        }
     }
 }
