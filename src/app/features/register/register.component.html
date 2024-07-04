@@ -4,11 +4,11 @@
     <form [formGroup]="registerFormGroup" class="form-group">
     <app-input
         id="register-input-username-72w5z2ui"
-        formControlName="username"
+        [formControlName]="RegisterFormEnum.USERNAME"
         label="Usuário"/>
     <app-hint-error
         id="register-input-username-hint-error-ajia7BTf"
-        [control]="registerFormGroup.controls['username']"
+        [control]="registerFormGroup.controls[RegisterFormEnum.USERNAME]"
         [errorMessages]="{
             required: 'Este campo é obrigatório',
             minlength: 'O tamanho mínimo desse campo são 3 caracteres'
@@ -16,11 +16,11 @@
 
     <app-input
         id="register-input-email-ygz0mIw1"
-        formControlName="email"
+        [formControlName]="RegisterFormEnum.EMAIL"
         label="Email"/>
     <app-hint-error
         id="register-input-email-hint-error-dKLeSZMS"
-        [control]="registerFormGroup.controls['email']"
+        [control]="registerFormGroup.controls[RegisterFormEnum.EMAIL]"
         [errorMessages]="{
             required: 'Este campo é obrigatório',
             email: 'Este campo só aceita email como valor'
@@ -28,11 +28,11 @@
 
     <app-input
         id="register-input-password-k936CKWU"
-        formControlName="password"
+        [formControlName]="RegisterFormEnum.PASSWORD"
         label="Password"/>
     <app-hint-error
         id="register-input-password-hint-error-cihrPUCm"
-        [control]="registerFormGroup.controls['password']"
+        [control]="registerFormGroup.controls[RegisterFormEnum.PASSWORD]"
         [errorMessages]="{
             required: 'Este campo é obrigatório',
             minLength: 'O tamanho mínimo para a senha são 6 caracteres',
@@ -44,11 +44,11 @@
 
     <app-input
         id="register-input-confirm-password-zGppqlEi"
-        formControlName="confirmPassword"
+        [formControlName]="RegisterFormEnum.CONFIRM_PASSWORD"
         label="Confirm Password"/>
     <app-hint-error
         id="register-input-confirm-password-hint-error-p6YWeUTa"
-        [control]="registerFormGroup.controls['confirmPassword']"
+        [control]="registerFormGroup.controls[RegisterFormEnum.CONFIRM_PASSWORD]"
         [errorMessages]="{
             required: 'Este campo é obrigatório',
             passwordMismatch: 'As senhas não coincidem'

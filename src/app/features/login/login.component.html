@@ -4,13 +4,13 @@
     <form [formGroup]="loginFormGroup" class="form-group">
         <app-input
             id="login-input-username-bBjsp9BX"
-            formControlName="username"
+            [formControlName]="LoginFormEnum.USERNAME"
             label="Usuário"/>
 
         <app-input
             id="login-input-password-d124zJ80"
             [type]="INPUT_TYPE.PASSWORD"
-            formControlName="password"
+            [formControlName]="LoginFormEnum.PASSWORD"
             label="Senha"/>
 
         <app-button 

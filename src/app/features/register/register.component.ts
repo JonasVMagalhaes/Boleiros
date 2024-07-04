@@ -7,6 +7,9 @@ import { FormValidator } from '@utils/form-validators/form-validators';
 import { MessageService } from '@services/message/message.service';
 import { RegisterForm } from './models/register-form.interface';
 import { RegisterService } from '@entities/register/services/register.service';
+import { filter, of } from 'rxjs';
+import { StringUtils } from '@utils/string/string-utils';
+import { RegisterFormEnum } from '@enums/forms/register-form.enum';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +19,7 @@ import { RegisterService } from '@entities/register/services/register.service';
 export class RegisterComponent implements OnInit {
   protected registerFormGroup: FormGroup<RegisterForm>;
   protected readonly RouteEnum = RouteEnum;
+  protected RegisterFormEnum = RegisterFormEnum;
 
   constructor(private readonly router: Router,
               private readonly messageService: MessageService,
@@ -31,36 +35,65 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    of(this.registerFormGroup)
+      .pipe(
+        filter(() => this.isPasswordEquals()),
+        filter(() => this.isFormValid())
+      )
+      .subscribe(() => this.performRegister());
+    
+  }
+  
+  private performRegister() {
     this.registerService.register(this.registerFormGroup)
-      .subscribe({
-        next: () => {
-          this.messageService.toast('Usuário criado com sucesso');
-          this.router.navigate([RouteEnum.HOME]);
-        },
-        error: (err: Error) => {
-          this.messageService.toast(err.message);
-        }
-      });
+    .subscribe({
+      next: () => {
+        this.messageService.toast('Usuário criado com sucesso');
+        this.router.navigate([RouteEnum.HOME]);
+      },
+      error: (err: Error) => {
+        this.messageService.toast(err.message);
+      }
+    });
   }
 
   private createFormGroup(): void {
     this.registerFormGroup = new FormGroup<RegisterForm>({
-      username: new FormControl('', [
+      [RegisterFormEnum.USERNAME]: new FormControl('', [
         Validators.minLength(3),
         Validators.required
       ]),
-      email: new FormControl(null, [
+      [RegisterFormEnum.EMAIL]: new FormControl(null, [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl(null, [
+      [RegisterFormEnum.PASSWORD]: new FormControl(null, [
         Validators.required,
         FormValidator.passwordStrongValidator
       ]),
-      confirmPassword: new FormControl(null, [
+      [RegisterFormEnum.CONFIRM_PASSWORD]: new FormControl(null, [
         Validators.required,
-        FormValidator.confirmPasswordValidator('password')
+        FormValidator.confirmPasswordValidator(RegisterFormEnum.PASSWORD)
       ])
     });
+  }
+
+  private isPasswordEquals(): boolean {
+    if(StringUtils.isEqual(
+      this.registerFormGroup.get(RegisterFormEnum.PASSWORD)?.value || '',
+      this.registerFormGroup.get(RegisterFormEnum.CONFIRM_PASSWORD)?.value || '',
+    )) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private isFormValid(): boolean {
+    if(this.registerFormGroup.valid) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

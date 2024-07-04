@@ -38,4 +38,8 @@ export class StringUtils {
     static hasWhiteSpace(value: string): boolean {
         return value.includes(" ");
     }
+
+    static isEqual(value1: string, value2: string): boolean {
+        return value1 === value2;
+    }
 };

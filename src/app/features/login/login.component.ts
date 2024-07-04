@@ -8,6 +8,7 @@ import { RouteEnum } from '@enums/routes/route.enum';
 import { CustomValidators } from '@validators/validators';
 import { LoginForm } from './models/login-form.interface';
 import { MessageService } from '@services/message/message.service';
+import { LoginFormEnum } from '@enums/forms/login-form.enum';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   protected loginFormGroup: FormGroup<LoginForm>;
   protected readonly INPUT_TYPE = InputType;
   protected readonly RouteEnum = RouteEnum;
+  protected readonly LoginFormEnum = LoginFormEnum;
 
   constructor(private readonly router: Router,
               private readonly authService: AuthService,
@@ -44,10 +46,10 @@ export class LoginComponent implements OnInit {
 
   private createFormGroup(): void {
     this.loginFormGroup = new FormGroup<LoginForm>({
-      username: new FormControl(null, [
+      [LoginFormEnum.USERNAME]: new FormControl(null, [
         Validators.required
       ]),
-      password: new FormControl(null, [
+      [LoginFormEnum.PASSWORD]: new FormControl(null, [
         Validators.required,
         CustomValidators.passwordValidator
       ]),

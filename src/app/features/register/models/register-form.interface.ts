@@ -1,8 +1,9 @@
 import { FormControl } from "@angular/forms";
+import { RegisterFormEnum } from "@enums/forms/register-form.enum";
 
 export interface RegisterForm {
-    username: FormControl<string | null>;
-    email: FormControl<string | null>;
-    password: FormControl<string | null>;
-    confirmPassword: FormControl<string | null>;
+    [RegisterFormEnum.USERNAME]: FormControl<string | null>;
+    [RegisterFormEnum.EMAIL]: FormControl<string | null>;
+    [RegisterFormEnum.PASSWORD]: FormControl<string | null>;
+    [RegisterFormEnum.CONFIRM_PASSWORD]: FormControl<string | null>;
 }
