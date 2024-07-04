@@ -1,4 +1,5 @@
 import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { PasswordValidatorEnum } from "@validators/enums/password-validator-enum";
 
 export class ConfirmPasswordValidator {
     public static get(passwordField: string): ValidatorFn {
@@ -6,7 +7,7 @@ export class ConfirmPasswordValidator {
             const password = control.root.get(passwordField);
             
             if (password && password.value !== control.value) {
-                return { 'passwordMismatch': true };
+                return { [PasswordValidatorEnum.MISMATCH]: true };
             }
             return null;
         };

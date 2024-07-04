@@ -3,13 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { RouteEnum } from '@enums/routes/route.enum';
-import { FormValidator } from '@utils/form-validators/form-validators';
 import { MessageService } from '@services/message/message.service';
 import { RegisterForm } from './models/register-form.interface';
 import { RegisterService } from '@entities/register/services/register.service';
 import { filter, of } from 'rxjs';
-import { StringUtils } from '@utils/string/string-utils';
 import { RegisterFormEnum } from '@enums/forms/register-form.enum';
+import { RegisterValidatorsErrors } from './validators-errors/register-validators-errors';
+import { CustomValidators } from '@validators/validators';
 
 @Component({
   selector: 'app-register',
@@ -18,8 +18,9 @@ import { RegisterFormEnum } from '@enums/forms/register-form.enum';
 })
 export class RegisterComponent implements OnInit {
   protected registerFormGroup: FormGroup<RegisterForm>;
-  protected readonly RouteEnum = RouteEnum;
-  protected RegisterFormEnum = RegisterFormEnum;
+  protected readonly ROUTE_ENUM = RouteEnum;
+  protected readonly REGISTER_FORM_ENUM = RegisterFormEnum;
+  protected readonly REGISTER_VALIDATORS_ERROR = RegisterValidatorsErrors;
 
   constructor(private readonly router: Router,
               private readonly messageService: MessageService,
@@ -37,11 +38,8 @@ export class RegisterComponent implements OnInit {
   register(): void {
     of(this.registerFormGroup)
       .pipe(
-        filter(() => this.isFormValid()),
-        filter(() => this.isPasswordEquals())
-      )
-      .subscribe(() => this.performRegister());
-    
+        filter(() => this.isFormValid()))
+      .subscribe(() => this.performRegister());    
   }
   
   private performRegister() {
@@ -51,9 +49,7 @@ export class RegisterComponent implements OnInit {
         this.messageService.toast('Usuário criado com sucesso');
         this.router.navigate([RouteEnum.HOME]);
       },
-      error: (err: Error) => {
-        this.messageService.toast(err.message);
-      }
+      error: (err: Error) => this.messageService.toast(err.message)
     });
   }
 
@@ -69,25 +65,13 @@ export class RegisterComponent implements OnInit {
       ]),
       [RegisterFormEnum.PASSWORD]: new FormControl(null, [
         Validators.required,
-        FormValidator.passwordStrongValidator
+        CustomValidators.passwordValidator
       ]),
       [RegisterFormEnum.CONFIRM_PASSWORD]: new FormControl(null, [
         Validators.required,
-        FormValidator.confirmPasswordValidator(RegisterFormEnum.PASSWORD)
+        CustomValidators.confirmPasswordValidator(RegisterFormEnum.PASSWORD)
       ])
     });
-  }
-
-  private isPasswordEquals(): boolean {
-    if(StringUtils.isEqual(
-      this.registerFormGroup.get(RegisterFormEnum.PASSWORD)?.value || '',
-      this.registerFormGroup.get(RegisterFormEnum.CONFIRM_PASSWORD)?.value || '',
-    )) {
-      return true;
-    } else {
-      this.messageService.toast("As senhas não coincidem");
-      return false;
-    }
   }
 
   private isFormValid(): boolean {

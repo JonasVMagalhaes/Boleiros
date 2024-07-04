@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { SharedModule } from 'app/shared/shared.module';
 import { RouteEnum } from '@enums/routes/route.enum';
-import { FormValidator } from '@utils/form-validators/form-validators';
+import { CustomValidators } from '@validators/validators';
 
 @Component({
   selector: 'app-reset-password',
@@ -21,11 +21,11 @@ export class ResetPasswordComponent {
   protected readonly resetPasswordFormGroup = new FormGroup({
     password: new FormControl(null, [
       Validators.required,
-      FormValidator.passwordStrongValidator
+      CustomValidators.passwordValidator
     ]),
     confirmPassword: new FormControl(null, [
       Validators.required,
-      FormValidator.confirmPasswordValidator('password')
+      CustomValidators.confirmPasswordValidator('password')
     ])
   });
 
