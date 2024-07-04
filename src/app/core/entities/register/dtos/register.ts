@@ -5,6 +5,9 @@ import { PrimitiveRegisterRequest } from "@models/primitives/register/register-r
 import { PrimitiveRegisterResponse } from "@models/primitives/register/register-response.interface";
 
 export class Register {
+    access_token: string;
+    expires_in: number;
+
     static toDto(form: FormGroup<RegisterForm>): PrimitiveRegisterRequest {
         return {
             username: form.get([RegisterFormEnum.USERNAME])?.value || '',

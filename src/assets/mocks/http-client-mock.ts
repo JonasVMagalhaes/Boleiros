@@ -44,8 +44,8 @@ class MockPrimitives {
 
     static register(body: any | null): Observable<PrimitiveRegisterResponse> {
         const validUsers = [
-            { username: "jonas", password: "123" },
-            { username: "moises", password: "124" }
+            { username: "jonas", password: "MinhaSenha123$" },
+            { username: "moises", password: "MinhaSenha124$" }
         ]
 
         const errorUnauthorized: ErrorRequisition<{}> = {
