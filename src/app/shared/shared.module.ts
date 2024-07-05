@@ -4,7 +4,6 @@ import { HttpClientAdapterModule } from '@adapters/http-client/http-client-adapt
 import { ComponentsModule } from '@components/components.module';
 import { CacheService } from '@services/cache/cache.service';
 import { EncryptionService } from '@services/encryption/encryption.service';
-import { AuthInterceptor } from '@services/http-interceptor/interceptor.service';
 import { CheckUpdatesService } from '@services/sw-updates/check-updates.service';
 import { MessageModule } from '@services/message/message.module';
 
@@ -17,7 +16,6 @@ import { MessageModule } from '@services/message/message.module';
   providers: [
     CacheService,
     EncryptionService,
-    AuthInterceptor,
     CheckUpdatesService
   ]
 })
