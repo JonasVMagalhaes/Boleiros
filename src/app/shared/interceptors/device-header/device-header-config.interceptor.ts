@@ -5,7 +5,6 @@ import { DeviceUtils } from "@utils/device/device-utils";
 import { Observable, tap } from "rxjs";
 
 export function deviceHeaderConfigInterceptor(originalRequest: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-    const teste = navigator
     const request: HttpRequest<unknown> = originalRequest.clone({
         headers: originalRequest.headers
             .set(DeviceInfoEnum.DEVICE_TYPE, DeviceUtils.getOperacionalSystem())
@@ -13,10 +12,6 @@ export function deviceHeaderConfigInterceptor(originalRequest: HttpRequest<unkno
             .set(DeviceInfoEnum.USER_AGENT, navigator.userAgent)
             .set(DeviceInfoEnum.PLATFORM, navigator.platform)
     });
-
-    if(request instanceof HttpRequest) {
-        console.log(request)
-    }
     
     return next(request).pipe(
         tap({

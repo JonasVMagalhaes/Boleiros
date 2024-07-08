@@ -32,6 +32,10 @@ export class CacheService implements CacheStrategy {
     return this.impl.get(key).pipe(map(data => this.encryptionService.decrypt(data)));
   }
 
+  getValue(key: KeysCacheEnum): string {
+    return this.encryptionService.decrypt(this.impl.getValue(key));
+  }
+
   update(key: KeysCacheEnum, value: string, daysToExpire: number = 7): Observable<void> {
     return this.impl.update(key, this.encryptionService.encrypt(value), daysToExpire);
   }

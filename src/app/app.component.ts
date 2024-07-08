@@ -5,6 +5,7 @@ import { CheckUpdatesModule } from '@services/sw-updates/check-updates.module';
 import { CheckUpdatesService } from '@services/sw-updates/check-updates.service';
 import { FeaturesModule } from '@features/features.module';
 import { HttpClient } from '@angular/common/http';
+import { Primitive } from '@enums/primitives/primitive.enum';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,6 @@ export class AppComponent implements OnInit {
   }
 
   teste() {
-    this.httpClient.get('https://api.adviceslip.com/advice').subscribe(res => console.log(res))
+    this.httpClient.get(Primitive.TESTE).subscribe(res => console.log(res))
   }
 }

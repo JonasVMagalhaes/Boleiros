@@ -1,5 +1,6 @@
 export enum Primitive {
     AUTH = '/auth',
     SIGN = '/sign',
-    REGISTER = '/register'
+    REGISTER = '/register',
+    TESTE = 'https://api.adviceslip.com/advice'
 }

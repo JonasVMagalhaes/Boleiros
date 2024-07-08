@@ -4,11 +4,11 @@ import { LoginForm } from "@features/login/models/login-form.interface";
 import { FormGroup } from "@angular/forms";
 
 export class Auth {
-    acessToken: string;
+    accessToken: string;
     expireTime: number;
     
     constructor(auth: PrimitiveSignInResponse) {
-        this.acessToken = auth.access_token;
+        this.accessToken = auth.access_token;
         this.expireTime = auth.expires_in;
     }
 

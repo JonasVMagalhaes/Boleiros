@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal } from '@angular/core';
 
 import { Observable, map, of, switchMap, tap } from 'rxjs';
 
@@ -14,18 +14,20 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class AuthService {
+  readonly authenticated: Signal<boolean>;
+
   constructor(private readonly httpClient: HttpClient,
               private readonly signInterceptorsService: SignInterceptorsService) {}
 
-  signIn(credencials: FormGroup<LoginForm>): Observable<Auth> {
-    return of(credencials)
-      .pipe(
-        map(Auth.toDto),
-        switchMap((credentialsDto) => this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, credentialsDto)),
-        map(Auth.fromDto),
-        tap({
-          next: (response) => this.signInterceptorsService.executeSuccess(response)
-        }),
-      );
-  }
+    signIn(credencials: FormGroup<LoginForm>): Observable<Auth> {
+        return of(credencials)
+            .pipe(
+              map(Auth.toDto),
+              switchMap((credentialsDto) => this.httpClient.post<PrimitiveSignInResponse>(Primitive.SIGN, credentialsDto)),
+              map(Auth.fromDto),
+              tap({
+                  next: (response) => this.signInterceptorsService.executeSuccess(response)
+              }),
+        );
+    }
 }
