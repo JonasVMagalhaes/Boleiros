@@ -9,13 +9,22 @@ $padding: 4px;
     box-sizing: border-box;
     padding: $padding;
 
-    .logo-and-name {
+    .resume {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .logo {
         display: flex;
         align-items: center;
     
         .team-logo {
             height: calc($score-height - (2 * #{$padding}));
             margin: 0 8px;
+        }
+
+        &.logo-right {
+            justify-content: flex-end;
         }
     }
 
